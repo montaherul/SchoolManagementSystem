@@ -1,0 +1,30 @@
+﻿<h2>Reports Dashboard</h2>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <a asp-action="StudentReport" class="btn btn-primary w-100">Student Report</a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-action="AttendanceReport" class="btn btn-success w-100">Attendance Report</a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-action="FeeReport" class="btn btn-warning w-100">Fee Report</a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-action="ResultReport" class="btn btn-info w-100">Result Report</a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-action="PayrollReport" class="btn btn-dark w-100">Payroll Report</a>
+    </div>
+
+
+    <button onclick="window.print()" class="btn btn-secondary">
+        Print
+    </button>
+
+</div>

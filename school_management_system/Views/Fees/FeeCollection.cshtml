@@ -1,0 +1,29 @@
+﻿@model IEnumerable<school_management_system.Models.Student>
+
+<h2>Fee Collection</h2>
+
+<table class="table">
+
+    <tr>
+        <th>Student</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var s in Model)
+    {
+        <tr>
+
+            <td>
+                @s.FirstName @s.LastName
+            </td>
+
+            <td>
+                <a asp-action="StudentFeeDetails" asp-route-id="@s.StudentID" class="btn btn-primary">
+                    View Fees
+                </a>
+            </td>
+
+        </tr>
+    }
+
+</table>

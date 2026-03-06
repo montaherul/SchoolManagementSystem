@@ -1,0 +1,188 @@
+﻿@{
+    ViewData["Title"] = "School Management Dashboard";
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">School Management System</h2>
+
+    <div class="row">
+
+        <!-- Students -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Students</h5>
+                    <a asp-controller="Students" asp-action="Index" class="btn btn-primary">
+                        Manage Students
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teachers -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Teachers</h5>
+                    <a asp-controller="Teachers" asp-action="Index" class="btn btn-success">
+                        Manage Teachers
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Classes -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Classes</h5>
+                    <a asp-controller="Classes" asp-action="Index" class="btn btn-info">
+                        Manage Classes
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sections -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Sections</h5>
+                    <a asp-controller="Sections" asp-action="Index" class="btn btn-warning">
+                        Manage Sections
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subjects -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Subjects</h5>
+                    <a asp-controller="Subjects" asp-action="Index" class="btn btn-dark">
+                        Manage Subjects
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher Subjects -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Teacher Subjects</h5>
+                    <a asp-controller="TeacherSubjects" asp-action="Index" class="btn btn-secondary">
+                        Assign Subjects
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher Salary -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Teacher Salaries</h5>
+                    <a asp-controller="TeacherSalaries" asp-action="Index" class="btn btn-danger">
+                        Manage Salaries
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salary Payments -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Salary Payments</h5>
+                    <a asp-controller="TeacherSalaryPayments" asp-action="Index" class="btn btn-primary">
+                        Pay Salaries
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Attendence</h5>
+                    <a asp-controller="Attendances" asp-action="AttendanceDashboard" class="btn btn-dark">
+                        Attendance
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Exams</h5>
+                    <a asp-controller="Exams" asp-action="Index" class="btn btn-primary">Exams</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Marks</h5>
+                    <a asp-controller="Marks" asp-action="Index" class="btn btn-success">Marks</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Results</h5>
+                    <a asp-controller="Results" asp-action="Index" class="btn btn-info">Results</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Fees Management</h5>
+                    <a asp-controller="Fees" asp-action="FeesDashboard" class="btn btn-danger">
+                        Fees Management
+                    </a>
+                </div>
+            </div>
+        </div>     
+        <div class="col-md-3 mb-3">
+        <div class="card shadow text-center">
+            <div class="card-body">
+                    <h5>Payroll Management</h5>
+                    <a asp-controller="Payroll" asp-action="Index" class="btn btn-dark">
+                        Payroll Management
+                    </a>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-3 mb-3">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <h5>Reports</h5>
+                        <a asp-controller="Reports" asp-action="Index" class="btn btn-danger">
+                           Reports
+                        </a>
+                    </div>
+                </div>
+
+         </div>
+        <div class="col-md-3 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>SMS Notification</h5>
+                    <a asp-controller="SMS" asp-action="Index" class="btn btn-warning">
+                        SMS Notification
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<school_management_system.Models.SalaryStructure>
+
+<h2>Salary Structure</h2>
+
+<table class="table">
+
+    <tr>
+        <th>Teacher</th>
+        <th>Basic</th>
+        <th>Allowance</th>
+        <th>Bonus</th>
+        <th>Deduction</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @item.Teacher.FirstName @item.Teacher.LastName
+            </td>
+
+            <td>@item.BasicSalary</td>
+            <td>@item.Allowance</td>
+            <td>@item.Bonus</td>
+            <td>@item.Deduction</td>
+
+        </tr>
+    }
+
+</table>

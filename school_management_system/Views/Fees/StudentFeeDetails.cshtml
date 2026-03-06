@@ -1,0 +1,37 @@
+﻿@model IEnumerable<school_management_system.Models.StudentFee>
+
+<h2>Student Fee Details</h2>
+
+<table class="table">
+
+    <tr>
+        <th>Fee Type</th>
+        <th>Amount</th>
+        <th>Due Date</th>
+        <th>Status</th>
+    </tr>
+
+    @foreach (var fee in Model)
+    {
+        <tr>
+
+            <td>
+                @fee.FeeType.FeeName
+            </td>
+
+            <td>
+                @fee.Amount
+            </td>
+
+            <td>
+                @fee.DueDate.ToShortDateString()
+            </td>
+
+            <td>
+                @fee.Status
+            </td>
+
+        </tr>
+    }
+
+</table>

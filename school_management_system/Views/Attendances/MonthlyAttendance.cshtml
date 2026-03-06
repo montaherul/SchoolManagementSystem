@@ -1,0 +1,32 @@
+﻿@model IEnumerable<school_management_system.Models.Attendance>
+
+<h2>Monthly Attendance</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Student</th>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @item.Student.FirstName @item.Student.LastName
+            </td>
+
+            <td>
+                @item.Date.ToString("dd MMM yyyy")
+            </td>
+
+            <td>
+                @item.Status
+            </td>
+
+        </tr>
+    }
+
+</table>

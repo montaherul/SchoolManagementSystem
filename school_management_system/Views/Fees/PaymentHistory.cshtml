@@ -1,0 +1,37 @@
+﻿@model IEnumerable<school_management_system.Models.FeePayment>
+
+<h2>Payment History</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Student</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Method</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @item.Student.FirstName @item.Student.LastName
+            </td>
+
+            <td>
+                @item.Amount
+            </td>
+
+            <td>
+                @item.PaymentDate.ToString("dd MMM yyyy")
+            </td>
+
+            <td>
+                @item.Method
+            </td>
+
+        </tr>
+    }
+
+</table>

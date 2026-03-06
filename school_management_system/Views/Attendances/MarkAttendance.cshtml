@@ -1,0 +1,51 @@
+﻿@model IEnumerable<school_management_system.Models.Student>
+
+<h2>Mark Attendance</h2>
+
+<form method="post">
+
+    <table class="table">
+
+        <tr>
+            <th>Student</th>
+            <th>Present</th>
+            <th>Absent</th>
+            <th>Late</th>
+        </tr>
+
+        @{
+            int i = 0;
+        }
+
+        @foreach (var student in Model)
+        {
+            <tr>
+
+                <td>
+                    @student.FirstName @student.LastName
+
+                    <input type="hidden" name="attendanceList[@i].StudentID" value="@student.StudentID" />
+                </td>
+
+                <td>
+                    <input type="radio" name="attendanceList[@i].Status" value="Present" />
+                </td>
+
+                <td>
+                    <input type="radio" name="attendanceList[@i].Status" value="Absent" />
+                </td>
+
+                <td>
+                    <input type="radio" name="attendanceList[@i].Status" value="Late" />
+                </td>
+
+            </tr>
+
+            i++;
+        }
+
+    </table>
+
+    <button class="btn btn-success">Save Attendance</button>
+
+</form>

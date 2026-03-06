@@ -1,0 +1,42 @@
+﻿@{
+    var students = ViewBag.Students;
+}
+
+<h2>Send SMS</h2>
+
+<form method="post">
+
+    <div class="form-group">
+
+        <label>Select Student</label>
+
+        <select name="StudentID" class="form-control">
+
+            @foreach (var s in students)
+            {
+                <option value="@s.StudentID">
+                    @s.FirstName @s.LastName
+                </option>
+            }
+
+        </select>
+
+    </div>
+
+    <br />
+
+    <div class="form-group">
+
+        <label>Message</label>
+
+        <textarea name="Message" class="form-control"></textarea>
+
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">
+        Send SMS
+    </button>
+
+</form>

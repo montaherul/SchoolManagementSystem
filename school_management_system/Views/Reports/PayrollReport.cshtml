@@ -1,0 +1,60 @@
+﻿@model IEnumerable<school_management_system.Models.SalaryPayment>
+
+<h2>Payroll Report</h2>
+
+<button onclick="window.print()" class="btn btn-primary">Print</button>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+
+    <thead>
+
+        <tr>
+            <th>Teacher</th>
+            <th>Amount</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var p in Model)
+        {
+            <tr>
+
+                <td>
+                    @p.Teacher?.FirstName @p.Teacher?.LastName
+                </td>
+
+                <td>
+                    @p.Amount
+                </td>
+
+                <td>
+                    @p.Month
+                </td>
+
+                <td>
+                    @p.Year
+                </td>
+
+                <td>
+                    @p.PaymentDate.ToShortDateString()
+                </td>
+
+                <td>
+                    @p.Status
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

@@ -1,0 +1,36 @@
+﻿@model school_management_system.Models.SalaryPayment
+
+<h2>Pay Salary</h2>
+
+<form method="post">
+
+    <label>Teacher</label>
+
+    <select asp-for="TeacherID" class="form-control">
+
+        @foreach (var t in ViewBag.Teachers)
+        {
+            <option value="@t.TeacherID">
+                @t.FirstName @t.LastName
+            </option>
+        }
+
+    </select>
+
+    <label>Amount</label>
+    <input asp-for="Amount" class="form-control" />
+
+    <label>Month</label>
+    <input asp-for="Month" class="form-control" />
+
+    <label>Year</label>
+    <input asp-for="Year" class="form-control" />
+
+    <label>Status</label>
+    <input asp-for="Status" class="form-control" />
+
+    <br />
+
+    <button class="btn btn-success">Pay Salary</button>
+
+</form>

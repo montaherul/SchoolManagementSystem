@@ -1,0 +1,50 @@
+﻿@model IEnumerable<school_management_system.Models.FeePayment>
+
+<h2>Fee Payment Report</h2>
+
+<button onclick="window.print()" class="btn btn-primary">Print</button>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+
+    <thead>
+
+        <tr>
+            <th>Student</th>
+            <th>Amount</th>
+            <th>Payment Date</th>
+            <th>Method</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var f in Model)
+        {
+            <tr>
+
+                <td>
+                    @f.Student?.FirstName @f.Student?.LastName
+                </td>
+
+                <td>
+                    @f.Amount
+                </td>
+
+                <td>
+                    @f.PaymentDate.ToShortDateString()
+                </td>
+
+                <td>
+                    @f.Method
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

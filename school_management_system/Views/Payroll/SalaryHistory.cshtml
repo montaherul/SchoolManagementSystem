@@ -1,0 +1,33 @@
+﻿@model IEnumerable<school_management_system.Models.SalaryPayment>
+
+<h2>Salary History</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Teacher</th>
+        <th>Amount</th>
+        <th>Month</th>
+        <th>Year</th>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @item.Teacher.FirstName @item.Teacher.LastName
+            </td>
+
+            <td>@item.Amount</td>
+            <td>@item.Month</td>
+            <td>@item.Year</td>
+            <td>@item.PaymentDate.ToShortDateString()</td>
+            <td>@item.Status</td>
+
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<school_management_system.Models.Result>
+
+<h2>Exam Result Report</h2>
+
+<button onclick="window.print()" class="btn btn-primary">Print</button>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+
+    <thead>
+
+        <tr>
+            <th>Student</th>
+            <th>Exam</th>
+            <th>Total Marks</th>
+            <th>Percentage</th>
+            <th>Grade</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var r in Model)
+        {
+            <tr>
+
+                <td>
+                    @r.Student?.FirstName @r.Student?.LastName
+                </td>
+
+                <td>
+                    @r.Exam?.ExamName
+                </td>
+
+                <td>
+                    @r.TotalMarks
+                </td>
+
+                <td>
+                    @r.Percentage %
+                </td>
+
+                <td>
+                    @r.Grade
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

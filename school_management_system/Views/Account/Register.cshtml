@@ -1,0 +1,23 @@
+﻿@model SchoolManagementSystem.Models.User
+
+<h2>Register</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label>Username</label>
+        @Html.TextBoxFor(m => m.Username)
+    </div>
+
+    <div>
+        <label>Password</label>
+        @Html.PasswordFor(m => m.Password)
+    </div>
+
+    <div>
+        <label>Role</label>
+        @Html.DropDownList("RoleID", null, "--Select Role--")
+    </div>
+
+    <button type="submit">Register</button>
+}

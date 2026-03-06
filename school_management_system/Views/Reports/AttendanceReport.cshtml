@@ -1,0 +1,48 @@
+﻿@model IEnumerable<school_management_system.Models.Attendance>
+
+<h2>Attendance Report</h2>
+
+<button onclick="window.print()" class="btn btn-primary">Print</button>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Method</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var a in Model)
+        {
+            <tr>
+
+                <td>
+                    @a.Student?.FirstName @a.Student?.LastName
+                </td>
+
+                <td>
+                    @a.Date.ToShortDateString()
+                </td>
+
+                <td>
+                    @a.Status
+                </td>
+
+                <td>
+                    @a.Method
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

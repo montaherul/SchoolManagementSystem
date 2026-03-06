@@ -1,0 +1,56 @@
+﻿<h2>Fees Dashboard</h2>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card bg-primary text-white p-3">
+            <h4>Total Students</h4>
+            <h2>@ViewBag.TotalStudents</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card bg-success text-white p-3">
+            <h4>Total Fees Assigned</h4>
+            <h2>@ViewBag.TotalFees</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card bg-warning text-white p-3">
+            <h4>Total Payments</h4>
+            <h2>@ViewBag.TotalPayments</h2>
+        </div>
+    </div>
+
+</div>
+
+<br />
+
+<div class="row">
+
+    <div class="col-md-3">
+        <a asp-controller="FeeTypes" asp-action="Index" class="btn btn-primary w-100">
+            Fee Types
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-controller="StudentFees" asp-action="Index" class="btn btn-success w-100">
+            Assign Fees
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-action="FeeCollection" class="btn btn-info w-100">
+            Fee Collection
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-action="PaymentHistory" class="btn btn-dark w-100">
+            Payment History
+        </a>
+    </div>
+
+</div>

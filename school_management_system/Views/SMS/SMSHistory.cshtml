@@ -1,0 +1,34 @@
+﻿@model IEnumerable<school_management_system.Models.SMSLog>
+
+<h2>SMS History</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+
+        <th>Student</th>
+        <th>Phone</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th>Status</th>
+
+    </tr>
+
+    @foreach (var sms in Model)
+    {
+        <tr>
+
+            <td>@sms.Student?.FirstName @sms.Student?.LastName</td>
+
+            <td>@sms.Phone</td>
+
+            <td>@sms.Message</td>
+
+            <td>@sms.SentDate</td>
+
+            <td>@sms.Status</td>
+
+        </tr>
+    }
+
+</table>
