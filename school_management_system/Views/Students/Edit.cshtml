@@ -102,20 +102,39 @@
 
             <div class="form-group">
                 <label>Class</label>
+            <select id="classDropdown"
+                    asp-for="ClassID"
+                    class="form-control"
+                    asp-items="ViewBag.ClassID">
+            </select>
+            </div>
+
+            @* <div class="form-group">
+                <label>Class</label>
                 <select asp-for="ClassID"
                         class="form-control"
                         asp-items="ViewBag.ClassID">
                     <option value="">Select Class</option>
                 </select>
-            </div>
 
-            <div class="form-group">
+            </div> *@
+
+            @* <div class="form-group">
                 <label>Section</label>
                 <select asp-for="SectionID"
                         class="form-control"
                         asp-items="ViewBag.SectionID">
                     <option value="">Select Section</option>
                 </select>
+            </div> *@
+
+            <div class="form-group">
+                <label>Section</label>
+            <select id="sectionDropdown"
+                    asp-for="SectionID"
+                    class="form-control"
+                    asp-items="ViewBag.SectionID">
+            </select>
             </div>
 
             <div class="form-group">
@@ -135,8 +154,45 @@
     </div>
 </div>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const classDropdown = document.getElementById("classDropdown");
+        const sectionDropdown = document.getElementById("sectionDropdown");
+
+        classDropdown.addEventListener("change", function () {
+
+            const classId = this.value;
+
+            if (!classId) {
+                sectionDropdown.innerHTML = '<option value="">Select Section</option>';
+                return;
+            }
+
+            sectionDropdown.innerHTML = '<option>Loading...</option>';
+
+            fetch('/Students/GetSections?classId=' + classId)
+            .then(response => response.json())
+            .then(data => {
+
+                sectionDropdown.innerHTML = '<option value="">Select Section</option>';
+
+                data.forEach(section => {
+
+                    const option = document.createElement("option");
+
+                    option.value = section.sectionID;
+                    option.text = section.sectionName;
+
+                    sectionDropdown.appendChild(option);
+
+                });
+
+            });
+
+        });
+
+    });
+
+</script>

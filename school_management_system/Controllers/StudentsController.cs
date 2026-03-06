@@ -61,7 +61,7 @@ namespace school_management_system.Controllers
         {
             ViewData["ClassID"] = new SelectList(_context.Classes, "ClassID", "ClassName");
 
-            ViewData["SectionID"] = new SelectList(_context.Sections, "SectionID", "SectionName");
+            ViewData["SectionID"] = new SelectList(new List<Section>(), "SectionID", "SectionName");
 
             return View();
         }
@@ -122,13 +122,18 @@ namespace school_management_system.Controllers
             if (student == null)
                 return NotFound();
 
+            // Load classes
             ViewData["ClassID"] = new SelectList(_context.Classes, "ClassID", "ClassName", student.ClassID);
 
-            ViewData["SectionID"] = new SelectList(_context.Sections, "SectionID", "SectionName", student.SectionID);
+            // Load sections based on selected class
+            var sections = _context.Sections
+                .Where(s => s.ClassID == student.ClassID)
+                .ToList();
+
+            ViewData["SectionID"] = new SelectList(sections, "SectionID", "SectionName", student.SectionID);
 
             return View(student);
         }
-
         // =========================
         // EDIT STUDENT (POST)
         // =========================
@@ -264,6 +269,23 @@ namespace school_management_system.Controllers
         private bool StudentExists(int id)
         {
             return _context.Students.Any(e => e.StudentID == id);
+        }
+        //GET SECTION 
+
+
+        [HttpGet]
+        public async Task<JsonResult> GetSections(int classId)
+        {
+            var sections = await _context.Sections
+                .Where(s => s.ClassID == classId)
+                .Select(s => new
+                {
+                    sectionID = s.SectionID,
+                    sectionName = s.SectionName
+                })
+                .ToListAsync();
+
+            return Json(sections);
         }
     }
 }

@@ -62,16 +62,16 @@ namespace SchoolManagementSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(User user)
         {
-            if (ModelState.IsValid)
-            {
+           // if (ModelState.IsValid)
+           // {
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction("Login");
-            }
+           // }
 
-            ViewBag.RoleID = new SelectList(_context.Roles, "RoleID", "RoleName", user.RoleID);
-            return View(user);
+          //  ViewBag.RoleID = new SelectList(_context.Roles, "RoleID", "RoleName", user.RoleID);
+            // return View(user);
         }
 
         // Logout

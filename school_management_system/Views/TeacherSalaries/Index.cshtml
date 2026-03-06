@@ -47,6 +47,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Teacher.TeacherID)
+                @Html.DisplayFor(modelItem => item.Teacher.FirstName)
+                @Html.DisplayFor(modelItem => item.Teacher.LastName)
+
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.SalaryID">Edit</a> |

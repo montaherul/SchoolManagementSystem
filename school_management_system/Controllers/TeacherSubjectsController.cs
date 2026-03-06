@@ -54,7 +54,15 @@ namespace school_management_system.Controllers
             ViewData["ClassID"] = new SelectList(_context.Classes, "ClassID", "ClassName");
             ViewData["SectionID"] = new SelectList(_context.Sections, "SectionID", "SectionName");
             ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectName");
-            ViewData["TeacherID"] = new SelectList(_context.Teachers, "TeacherID", "TeacherID");
+            ViewData["TeacherID"] = new SelectList(
+     _context.Teachers.Select(t => new
+     {
+         t.TeacherID,
+         Name = t.TeacherID + " - " + t.FirstName + " " + t.LastName
+     }),
+     "TeacherID",
+     "Name"
+ );
             return View();
         }
 
@@ -74,7 +82,14 @@ namespace school_management_system.Controllers
             ViewData["ClassID"] = new SelectList(_context.Classes, "ClassID", "ClassName", teacherSubject.ClassID);
             ViewData["SectionID"] = new SelectList(_context.Sections, "SectionID", "SectionName", teacherSubject.SectionID);
             ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectName", teacherSubject.SubjectID);
-            ViewData["TeacherID"] = new SelectList(_context.Teachers, "TeacherID", "TeacherID", teacherSubject.TeacherID);
+            ViewData["TeacherID"] = new SelectList(_context.Teachers.Select(t => new
+                                                                                     {
+                                                                                         t.TeacherID,
+                                                                                         Name = t.TeacherID + " - " + t.FirstName + " " + t.LastName
+                                                                                     }),
+                                                                                     "TeacherID",
+                                                                                     "Name"
+                                                                                 );
             return View(teacherSubject);
         }
 
@@ -94,7 +109,15 @@ namespace school_management_system.Controllers
             ViewData["ClassID"] = new SelectList(_context.Classes, "ClassID", "ClassName", teacherSubject.ClassID);
             ViewData["SectionID"] = new SelectList(_context.Sections, "SectionID", "SectionName", teacherSubject.SectionID);
             ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectName", teacherSubject.SubjectID);
-            ViewData["TeacherID"] = new SelectList(_context.Teachers, "TeacherID", "TeacherID", teacherSubject.TeacherID);
+            ViewData["TeacherID"] = new SelectList(
+    _context.Teachers.Select(t => new
+    {
+        t.TeacherID,
+        Name = t.TeacherID + " - " + t.FirstName + " " + t.LastName
+    }),
+    "TeacherID",
+    "Name"
+);
             return View(teacherSubject);
         }
 
@@ -133,7 +156,15 @@ namespace school_management_system.Controllers
             ViewData["ClassID"] = new SelectList(_context.Classes, "ClassID", "ClassName", teacherSubject.ClassID);
             ViewData["SectionID"] = new SelectList(_context.Sections, "SectionID", "SectionName", teacherSubject.SectionID);
             ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectName", teacherSubject.SubjectID);
-            ViewData["TeacherID"] = new SelectList(_context.Teachers, "TeacherID", "TeacherID", teacherSubject.TeacherID);
+            ViewData["TeacherID"] = new SelectList(
+     _context.Teachers.Select(t => new
+     {
+         t.TeacherID,
+         Name = t.TeacherID + " - " + t.FirstName + " " + t.LastName
+     }),
+     "TeacherID",
+     "Name"
+ );
             return View(teacherSubject);
         }
 

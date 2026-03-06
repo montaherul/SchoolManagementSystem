@@ -61,14 +61,14 @@ namespace school_management_system.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("SectionID,SectionName,ClassID")] Section section)
         {
-            if (ModelState.IsValid)
-            {
+           // if (ModelState.IsValid)
+            //{
                 _context.Add(section);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["ClassID"] = new SelectList(_context.Classes, "ClassID", "ClassName", section.ClassID);
-            return View(section);
+           // }
+          //  ViewData["ClassID"] = new SelectList(_context.Classes, "ClassID", "ClassName", section.ClassID);
+          //  return View(section);
         }
 
         // GET: Sections/Edit/5

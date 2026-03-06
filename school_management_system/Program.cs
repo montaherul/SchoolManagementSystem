@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Rotativa.AspNetCore;
 using school_management_system;
+using school_management_system.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,9 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+builder.Services.AddScoped<SMSService>();
+builder.Services.AddScoped<EmailService>();
+builder.Services.AddScoped<NotificationService>();
 
 var app = builder.Build();
 
@@ -38,6 +42,7 @@ app.UseRouting();
 
 // Enable Session
 app.UseSession();
+
 
 app.UseAuthorization();
 

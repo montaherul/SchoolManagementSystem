@@ -60,13 +60,13 @@ namespace school_management_system.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ClassID,ClassName")] Class @class)
         {
-            if (ModelState.IsValid)
-            {
+           // if (ModelState.IsValid)
+           // {
                 _context.Add(@class);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(@class);
+          //  }
+         //   return View(@class);
         }
 
         // GET: Classes/Edit/5

@@ -48,7 +48,15 @@ namespace school_management_system.Controllers
         // GET: TeacherSalaries/Create
         public IActionResult Create()
         {
-            ViewData["TeacherID"] = new SelectList(_context.Teachers, "TeacherID", "TeacherID");
+            ViewData["TeacherID"] = new SelectList(
+    _context.Teachers.Select(t => new
+    {
+        t.TeacherID,
+        Name = t.FirstName + " " + t.LastName
+    }),
+    "TeacherID",
+    "Name"
+);
             return View();
         }
 
@@ -65,7 +73,16 @@ namespace school_management_system.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TeacherID"] = new SelectList(_context.Teachers, "TeacherID", "TeacherID", teacherSalary.TeacherID);
+            ViewData["TeacherID"] = new SelectList(
+      _context.Teachers.Select(t => new
+      {
+          t.TeacherID,
+          Name = t.FirstName + " " + t.LastName
+      }),
+      "TeacherID",
+      "Name",
+      teacherSalary.TeacherID
+  );
             return View(teacherSalary);
         }
 
@@ -82,7 +99,15 @@ namespace school_management_system.Controllers
             {
                 return NotFound();
             }
-            ViewData["TeacherID"] = new SelectList(_context.Teachers, "TeacherID", "TeacherID", teacherSalary.TeacherID);
+            ViewData["TeacherID"] = new SelectList(
+     _context.Teachers.Select(t => new
+     {
+         t.TeacherID,
+         Name = t.FirstName + " " + t.LastName
+     }),
+     "TeacherID",
+     "Name"
+ );
             return View(teacherSalary);
         }
 
@@ -118,7 +143,16 @@ namespace school_management_system.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TeacherID"] = new SelectList(_context.Teachers, "TeacherID", "TeacherID", teacherSalary.TeacherID);
+            ViewData["TeacherID"] = new SelectList(
+      _context.Teachers.Select(t => new
+      {
+          t.TeacherID,
+          Name = t.FirstName + " " + t.LastName
+      }),
+      "TeacherID",
+      "Name",
+      teacherSalary.TeacherID
+  );
             return View(teacherSalary);
         }
 

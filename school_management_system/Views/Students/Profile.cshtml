@@ -143,7 +143,10 @@
                 Edit Profile
             </a>
 
-            <a class="btn btn-success m-2">
+            <a asp-controller="Attendances"
+                   asp-action="StudentAttendance"
+                   asp-route-id="@Model.StudentID"
+                   class="btn btn-success m-2">
                 View Attendance
             </a>
 

@@ -14,10 +14,12 @@ namespace school_management_system.Controllers
     public class AttendancesController : Controller
     {
         private readonly MyDBContext _context;
+        private readonly NotificationService _notification;
 
-        public AttendancesController(MyDBContext context)
+        public AttendancesController(MyDBContext context, NotificationService notification)
         {
             _context = context;
+            _notification = notification;
         }
 
         // GET: Attendances
@@ -30,18 +32,13 @@ namespace school_management_system.Controllers
         // GET: Attendances/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var attendance = await _context.Attendances
                 .Include(a => a.Student)
                 .FirstOrDefaultAsync(m => m.AttendanceID == id);
-            if (attendance == null)
-            {
-                return NotFound();
-            }
+
+            if (attendance == null) return NotFound();
 
             return View(attendance);
         }
@@ -54,8 +51,6 @@ namespace school_management_system.Controllers
         }
 
         // POST: Attendances/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("AttendanceID,StudentID,Date,Status,Method")] Attendance attendance)
@@ -66,6 +61,7 @@ namespace school_management_system.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["StudentID"] = new SelectList(_context.Students, "StudentID", "StudentID", attendance.StudentID);
             return View(attendance);
         }
@@ -73,31 +69,21 @@ namespace school_management_system.Controllers
         // GET: Attendances/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var attendance = await _context.Attendances.FindAsync(id);
-            if (attendance == null)
-            {
-                return NotFound();
-            }
+            if (attendance == null) return NotFound();
+
             ViewData["StudentID"] = new SelectList(_context.Students, "StudentID", "StudentID", attendance.StudentID);
             return View(attendance);
         }
 
         // POST: Attendances/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AttendanceID,StudentID,Date,Status,Method")] Attendance attendance)
         {
-            if (id != attendance.AttendanceID)
-            {
-                return NotFound();
-            }
+            if (id != attendance.AttendanceID) return NotFound();
 
             if (ModelState.IsValid)
             {
@@ -109,16 +95,14 @@ namespace school_management_system.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!AttendanceExists(attendance.AttendanceID))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["StudentID"] = new SelectList(_context.Students, "StudentID", "StudentID", attendance.StudentID);
             return View(attendance);
         }
@@ -126,18 +110,13 @@ namespace school_management_system.Controllers
         // GET: Attendances/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var attendance = await _context.Attendances
                 .Include(a => a.Student)
                 .FirstOrDefaultAsync(m => m.AttendanceID == id);
-            if (attendance == null)
-            {
-                return NotFound();
-            }
+
+            if (attendance == null) return NotFound();
 
             return View(attendance);
         }
@@ -148,6 +127,7 @@ namespace school_management_system.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var attendance = await _context.Attendances.FindAsync(id);
+
             if (attendance != null)
             {
                 _context.Attendances.Remove(attendance);
@@ -162,13 +142,40 @@ namespace school_management_system.Controllers
             return _context.Attendances.Any(e => e.AttendanceID == id);
         }
 
+        // ===============================
+        // MARK ATTENDANCE MODULE
+        // ===============================
 
-        // Mark Attendance Page
-        public async Task<IActionResult> MarkAttendance()
+        public async Task<IActionResult> MarkAttendance(int? classId, int? sectionId)
         {
-            var students = await _context.Students.ToListAsync();
+            // Load classes
+            ViewBag.Classes = await _context.Classes.ToListAsync();
+
+            // Load sections based on selected class
+            if (classId != null)
+            {
+                ViewBag.Sections = await _context.Sections
+                    .Where(s => s.ClassID == classId)
+                    .ToListAsync();
+            }
+            else
+            {
+                ViewBag.Sections = new List<Section>();
+            }
+
+            // Load students based on class + section
+            List<Student> students = new List<Student>();
+
+            if (classId.HasValue && sectionId.HasValue)
+            {
+                students = await _context.Students
+                    .Where(s => s.ClassID == classId.Value && s.SectionID == sectionId.Value)
+                    .ToListAsync();
+            }
+
             return View(students);
         }
+
         [HttpPost]
         public async Task<IActionResult> MarkAttendance(List<Attendance> attendanceList)
         {
@@ -180,14 +187,23 @@ namespace school_management_system.Controllers
 
                 var student = await _context.Students.FindAsync(item.StudentID);
 
-                if (item.Status == "Absent")
+                if (student != null && item.Status == "Absent")
                 {
-                    SMSService sms = new SMSService();
-
                     string message =
-                    $"Dear Parent, {student.FirstName} {student.LastName} is ABSENT today.";
+                        $"Dear {student.ParentName}, {student.FirstName} {student.LastName} is ABSENT today.";
 
-                    sms.SendSMS(student.ParentPhone, message);
+                    try
+                    {
+                        _notification.SendNotification(
+                            student.ParentPhone,
+                            student.ParentEmail,
+                            message
+                        );
+                    }
+                    catch
+                    {
+                        // ignore notification errors
+                    }
 
                     SMSLog log = new SMSLog
                     {
@@ -206,6 +222,10 @@ namespace school_management_system.Controllers
 
             return RedirectToAction("AttendanceDashboard");
         }
+        // ===============================
+        // DASHBOARD
+        // ===============================
+
         public IActionResult AttendanceDashboard()
         {
             var attendance = _context.Attendances
@@ -216,8 +236,10 @@ namespace school_management_system.Controllers
             return View(attendance);
         }
 
+        // ===============================
+        // MONTHLY ATTENDANCE
+        // ===============================
 
-        // Monthly Attendance
         public async Task<IActionResult> MonthlyAttendance()
         {
             var data = await _context.Attendances
@@ -227,5 +249,37 @@ namespace school_management_system.Controllers
 
             return View(data);
         }
+
+        // ===============================
+        // STUDENT ATTENDANCE
+        // ===============================
+
+        public async Task<IActionResult> StudentAttendance(int id)
+        {
+            var attendance = await _context.Attendances
+                .Include(a => a.Student)
+                .Where(a => a.StudentID == id)
+                .OrderByDescending(a => a.Date)
+                .ToListAsync();
+
+            return View(attendance);
+        }
+
+        //get section
+        [HttpGet]
+        public async Task<JsonResult> GetSections(int classId)
+        {
+            var sections = await _context.Sections
+                .Where(s => s.ClassID == classId)
+                .Select(s => new
+                {
+                    sectionID = s.SectionID,
+                    sectionName = s.SectionName
+                })
+                .ToListAsync();
+
+            return Json(sections);
+        }
+
     }
 }

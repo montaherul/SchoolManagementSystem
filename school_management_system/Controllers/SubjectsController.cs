@@ -56,13 +56,13 @@ namespace school_management_system.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("SubjectID,SubjectName")] Subject subject)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+           // {
                 _context.Add(subject);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(subject);
+           // }
+            // return View(subject);
         }
 
         // GET: Subjects/Edit/5

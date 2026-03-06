@@ -2,9 +2,51 @@
 
 <h2>Mark Attendance</h2>
 
+<!-- CLASS + SECTION FILTER -->
+<form method="get">
+
+    <div class="row mb-3">
+
+        <!-- CLASS -->
+        <div class="col-md-4">
+            <label>Class</label>
+            <select id="classDropdown" name="classId" class="form-control">
+                <option value="">Select Class</option>
+
+                @foreach (var c in ViewBag.Classes)
+                {
+                    <option value="@c.ClassID">@c.ClassName</option>
+                }
+
+            </select>
+        </div>
+
+        <!-- SECTION -->
+        <div class="col-md-4">
+            <label>Section</label>
+            <select id="sectionDropdown" name="sectionId" class="form-control">
+                <option value="">Select Section</option>
+            </select>
+        </div>
+
+        <!-- LOAD BUTTON -->
+        <div class="col-md-4" style="margin-top:25px;">
+            <button type="submit" class="btn btn-primary">
+                Load Students
+            </button>
+        </div>
+
+    </div>
+
+</form>
+
+<hr />
+
+<!-- ATTENDANCE TABLE -->
+
 <form method="post">
 
-    <table class="table">
+    <table class="table table-bordered">
 
         <tr>
             <th>Student</th>
@@ -24,19 +66,27 @@
                 <td>
                     @student.FirstName @student.LastName
 
-                    <input type="hidden" name="attendanceList[@i].StudentID" value="@student.StudentID" />
+                    <input type="hidden"
+                           name="attendanceList[@i].StudentID"
+                           value="@student.StudentID" />
                 </td>
 
                 <td>
-                    <input type="radio" name="attendanceList[@i].Status" value="Present" />
+                    <input type="radio"
+                           name="attendanceList[@i].Status"
+                           value="Present" required />
                 </td>
 
                 <td>
-                    <input type="radio" name="attendanceList[@i].Status" value="Absent" />
+                    <input type="radio"
+                           name="attendanceList[@i].Status"
+                           value="Absent" />
                 </td>
 
                 <td>
-                    <input type="radio" name="attendanceList[@i].Status" value="Late" />
+                    <input type="radio"
+                           name="attendanceList[@i].Status"
+                           value="Late" />
                 </td>
 
             </tr>
@@ -46,6 +96,74 @@
 
     </table>
 
-    <button class="btn btn-success">Save Attendance</button>
+    @if (Model.Any())
+    {
+        <button type="submit" class="btn btn-success">
+            Save Attendance
+        </button>
+    }
 
 </form>
+
+
+<!-- SECTION AJAX SCRIPT -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const classDropdown = document.getElementById("classDropdown");
+        const sectionDropdown = document.getElementById("sectionDropdown");
+
+        classDropdown.addEventListener("change", function () {
+
+            const classId = this.value;
+
+            if (!classId)
+            {
+                sectionDropdown.innerHTML =
+                '<option value="">Select Section</option>';
+                return;
+            }
+
+            sectionDropdown.innerHTML =
+            '<option>Loading...</option>';
+
+            fetch('/Attendances/GetSections?classId=' + classId)
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                sectionDropdown.innerHTML =
+                '<option value="">Select Section</option>';
+
+                data.forEach(section => {
+
+                    const option =
+                    document.createElement("option");
+
+                    option.value = section.sectionID;
+
+                    option.text = section.sectionName;
+
+                    sectionDropdown.appendChild(option);
+
+                });
+
+            })
+
+            .catch(error => {
+
+                console.error("Error loading sections:", error);
+
+                sectionDropdown.innerHTML =
+                '<option>Error loading sections</option>';
+
+            });
+
+        });
+
+    });
+
+</script>
