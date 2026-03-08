@@ -179,42 +179,74 @@ namespace school_management_system.Controllers
         [HttpPost]
         public async Task<IActionResult> MarkAttendance(List<Attendance> attendanceList)
         {
+            var today = DateTime.Today;
+
             foreach (var item in attendanceList)
             {
-                item.Date = DateTime.Now;
+                // Skip if status not selected
+                if (string.IsNullOrEmpty(item.Status))
+                    continue;
 
-                _context.Attendances.Add(item);
+                var existingAttendance = await _context.Attendances
+                    .FirstOrDefaultAsync(a =>
+                        a.StudentID == item.StudentID &&
+                        a.Date == today);
+
+                if (existingAttendance == null)
+                {
+                    // Insert new attendance
+                    item.Date = today;
+                    item.Method = "Manual";
+
+                    _context.Attendances.Add(item);
+                }
+                else
+                {
+                    // Update existing attendance
+                    existingAttendance.Status = item.Status;
+                    existingAttendance.Method = "Manual";
+                }
 
                 var student = await _context.Students.FindAsync(item.StudentID);
 
+                // Send SMS only once if absent
                 if (student != null && item.Status == "Absent")
                 {
-                    string message =
-                        $"Dear {student.ParentName}, {student.FirstName} {student.LastName} is ABSENT today.";
+                    bool smsAlreadySent = await _context.SMSLogs
+                        .AnyAsync(s =>
+                            s.StudentID == student.StudentID &&
+                            s.SentDate.Date == today &&
+                            s.Message.Contains("ABSENT"));
 
-                    try
+                    if (!smsAlreadySent)
                     {
-                        _notification.SendNotification(
-                            student.ParentPhone,
-                            student.ParentEmail,
-                            message
-                        );
+                        string message =
+                            $"Dear {student.ParentName}, {student.FirstName} {student.LastName} is ABSENT today.";
+
+                        try
+                        {
+                            _notification.SendNotification(
+                                student.ParentPhone,
+                                student.ParentEmail,
+                                message
+                            );
+                        }
+                        catch
+                        {
+                            // ignore notification errors
+                        }
+
+                        SMSLog log = new SMSLog
+                        {
+                            StudentID = student.StudentID,
+                            Phone = student.ParentPhone,
+                            Message = message,
+                            SentDate = DateTime.Now,
+                            Status = "Sent"
+                        };
+
+                        _context.SMSLogs.Add(log);
                     }
-                    catch
-                    {
-                        // ignore notification errors
-                    }
-
-                    SMSLog log = new SMSLog
-                    {
-                        StudentID = student.StudentID,
-                        Phone = student.ParentPhone,
-                        Message = message,
-                        SentDate = DateTime.Now,
-                        Status = "Sent"
-                    };
-
-                    _context.SMSLogs.Add(log);
                 }
             }
 
@@ -228,22 +260,69 @@ namespace school_management_system.Controllers
 
         public IActionResult AttendanceDashboard()
         {
+            var today = DateTime.Today;
+
+            var totalStudents = _context.Students.Count();
+
+            var todayAttendance = _context.Attendances
+                .Where(a => a.Date.Date == today)
+                .ToList();
+
+            var present = todayAttendance.Count(a => a.Status == "Present");
+            var absent = todayAttendance.Count(a => a.Status == "Absent");
+            var late = todayAttendance.Count(a => a.Status == "Late");
+
+            ViewBag.TotalStudents = totalStudents;
+            ViewBag.Present = present;
+            ViewBag.Absent = absent;
+            ViewBag.Late = late;
+
             var attendance = _context.Attendances
                 .Include(a => a.Student)
                 .OrderByDescending(a => a.Date)
+                .Take(50)
                 .ToList();
 
             return View(attendance);
         }
-
         // ===============================
         // MONTHLY ATTENDANCE
         // ===============================
 
-        public async Task<IActionResult> MonthlyAttendance()
+        public async Task<IActionResult> MonthlyAttendance(int? month, int? year, int? classId, int? sectionId)
         {
-            var data = await _context.Attendances
+            if (month == null) month = DateTime.Now.Month;
+            if (year == null) year = DateTime.Now.Year;
+
+            ViewBag.Month = month;
+            ViewBag.Year = year;
+
+            ViewBag.Classes = await _context.Classes.ToListAsync();
+
+            if (classId != null)
+            {
+                ViewBag.Sections = await _context.Sections
+                    .Where(s => s.ClassID == classId)
+                    .ToListAsync();
+            }
+            else
+            {
+                ViewBag.Sections = new List<Section>();
+            }
+
+            var query = _context.Attendances
                 .Include(a => a.Student)
+                .AsQueryable();
+
+            query = query.Where(a => a.Date.Month == month && a.Date.Year == year);
+
+            if (classId != null)
+                query = query.Where(a => a.Student.ClassID == classId);
+
+            if (sectionId != null)
+                query = query.Where(a => a.Student.SectionID == sectionId);
+
+            var data = await query
                 .OrderByDescending(a => a.Date)
                 .ToListAsync();
 
@@ -262,9 +341,18 @@ namespace school_management_system.Controllers
                 .OrderByDescending(a => a.Date)
                 .ToListAsync();
 
+            int total = attendance.Count;
+            int present = attendance.Count(a => a.Status == "Present");
+            int absent = attendance.Count(a => a.Status == "Absent");
+          
+
+            ViewBag.AttendancePercent = total == 0 ? 0 :
+                (present * 100) / total;
+            ViewBag.Totalpresentday= present;
+            ViewBag.Totalabsentday= absent;
+
             return View(attendance);
         }
-
         //get section
         [HttpGet]
         public async Task<JsonResult> GetSections(int classId)

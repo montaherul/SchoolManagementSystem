@@ -3,6 +3,54 @@
   "WorkspaceRootPath": "C:\\Users\\islam\\source\\repos\\school_management_system\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\students\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\students\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\models\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\models\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\models\\attendance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\models\\attendance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\controllers\\resultscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\controllers\\resultscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\controllers\\sectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\controllers\\sectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\controllers\\attendancescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\controllers\\attendancescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\attendances\\markattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\attendances\\markattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\attendances\\monthlyattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\attendances\\monthlyattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\attendances\\studentattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\attendances\\studentattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\attendances\\attendancedashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\attendances\\attendancedashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\controllers\\markscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\controllers\\markscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\students\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\students\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -11,28 +59,12 @@
       "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\students\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\students\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\students\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\students\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\students\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\students\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\students\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\attendances\\markattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\attendances\\markattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\controllers\\attendancescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\controllers\\attendancescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -73,14 +105,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\sms\\sendsms.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\sms\\sendsms.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\attendances\\studentattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\attendances\\studentattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\attendances\\attendancedashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\views\\attendances\\attendancedashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -163,10 +187,6 @@
       "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\controllers\\subjectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\controllers\\sectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\controllers\\sectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|c:\\users\\islam\\source\\repos\\school_management_system\\school_management_system\\controllers\\classescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{441373E6-E5B4-BB20-35E5-CA937F663C4E}|school_management_system\\school_management_system.csproj|solutionrelative:school_management_system\\controllers\\classescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -182,7 +202,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -190,84 +210,176 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "Result.cs",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Models\\Result.cs",
+              "RelativeDocumentMoniker": "school_management_system\\Models\\Result.cs",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Models\\Result.cs",
+              "RelativeToolTip": "school_management_system\\Models\\Result.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:21:46.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ResultsController.cs",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\ResultsController.cs",
+              "RelativeDocumentMoniker": "school_management_system\\Controllers\\ResultsController.cs",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\ResultsController.cs",
+              "RelativeToolTip": "school_management_system\\Controllers\\ResultsController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:21:38.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Attendance.cs",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Models\\Attendance.cs",
+              "RelativeDocumentMoniker": "school_management_system\\Models\\Attendance.cs",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Models\\Attendance.cs",
+              "RelativeToolTip": "school_management_system\\Models\\Attendance.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T16:14:26.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MarkAttendance.cshtml",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\MarkAttendance.cshtml",
+              "RelativeDocumentMoniker": "school_management_system\\Views\\Attendances\\MarkAttendance.cshtml",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\MarkAttendance.cshtml",
+              "RelativeToolTip": "school_management_system\\Views\\Attendances\\MarkAttendance.cshtml",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-06T16:07:04.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Edit.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\Students\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Edit.cshtml*",
-              "RelativeToolTip": "school_management_system\\Views\\Students\\Edit.cshtml*",
-              "ViewState": "AgIAAKEAAAAAAAAAAAAAAMUAAAAJAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Edit.cshtml",
+              "RelativeToolTip": "school_management_system\\Views\\Students\\Edit.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAMUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-06T17:01:16.586Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Details.cshtml",
-              "RelativeDocumentMoniker": "school_management_system\\Views\\Students\\Details.cshtml",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Details.cshtml",
-              "RelativeToolTip": "school_management_system\\Views\\Students\\Details.cshtml",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "AttendanceDashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\AttendanceDashboard.cshtml",
+              "RelativeDocumentMoniker": "school_management_system\\Views\\Attendances\\AttendanceDashboard.cshtml",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\AttendanceDashboard.cshtml",
+              "RelativeToolTip": "school_management_system\\Views\\Attendances\\AttendanceDashboard.cshtml",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T17:01:08.786Z",
+              "WhenOpened": "2026-03-06T14:38:41.985Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Delete.cshtml",
-              "RelativeDocumentMoniker": "school_management_system\\Views\\Students\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Delete.cshtml",
-              "RelativeToolTip": "school_management_system\\Views\\Students\\Delete.cshtml",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T17:01:01.073Z",
+              "DocumentIndex": 5,
+              "Title": "SectionsController.cs",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\SectionsController.cs",
+              "RelativeDocumentMoniker": "school_management_system\\Controllers\\SectionsController.cs",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\SectionsController.cs",
+              "RelativeToolTip": "school_management_system\\Controllers\\SectionsController.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAwKEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T12:45:27.267Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Profile.cshtml",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Profile.cshtml",
+              "RelativeDocumentMoniker": "school_management_system\\Views\\Students\\Profile.cshtml",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Profile.cshtml*",
+              "RelativeToolTip": "school_management_system\\Views\\Students\\Profile.cshtml*",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAkwLQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-06T14:35:50.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "StudentsController.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\StudentsController.cs",
               "RelativeDocumentMoniker": "school_management_system\\Controllers\\StudentsController.cs",
               "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\StudentsController.cs",
               "RelativeToolTip": "school_management_system\\Controllers\\StudentsController.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAIwIcAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAPQAAAAAAAAAAAAqwBQBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-06T16:56:06.624Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Create.cshtml",
-              "RelativeDocumentMoniker": "school_management_system\\Views\\Students\\Create.cshtml",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Create.cshtml",
-              "RelativeToolTip": "school_management_system\\Views\\Students\\Create.cshtml",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAkwFUAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T16:54:38.385Z",
+              "DocumentIndex": 6,
+              "Title": "AttendancesController.cs",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\AttendancesController.cs",
+              "RelativeDocumentMoniker": "school_management_system\\Controllers\\AttendancesController.cs",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\AttendancesController.cs",
+              "RelativeToolTip": "school_management_system\\Controllers\\AttendancesController.cs",
+              "ViewState": "AgIAAN4AAAAAAAAAAAAkwP8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T14:37:28.058Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Services\\EmailService.cs",
-              "RelativeDocumentMoniker": "school_management_system\\Services\\EmailService.cs",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Services\\EmailService.cs",
-              "RelativeToolTip": "school_management_system\\Services\\EmailService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
+              "Title": "MarksController.cs",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\MarksController.cs",
+              "RelativeDocumentMoniker": "school_management_system\\Controllers\\MarksController.cs",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\MarksController.cs",
+              "RelativeToolTip": "school_management_system\\Controllers\\MarksController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T15:47:41.101Z"
+              "WhenOpened": "2026-03-08T16:14:55.769Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 9,
+              "Title": "StudentAttendance.cshtml",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\StudentAttendance.cshtml",
+              "RelativeDocumentMoniker": "school_management_system\\Views\\Attendances\\StudentAttendance.cshtml",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\StudentAttendance.cshtml",
+              "RelativeToolTip": "school_management_system\\Views\\Attendances\\StudentAttendance.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-06T14:39:09.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MonthlyAttendance.cshtml",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\MonthlyAttendance.cshtml",
+              "RelativeDocumentMoniker": "school_management_system\\Views\\Attendances\\MonthlyAttendance.cshtml",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\MonthlyAttendance.cshtml",
+              "RelativeToolTip": "school_management_system\\Views\\Attendances\\MonthlyAttendance.cshtml",
+              "ViewState": "AgIAAIoAAAAAAAAAAADwv60AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-08T16:25:05.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "SMSService.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Services\\SMSService.cs",
               "RelativeDocumentMoniker": "school_management_system\\Services\\SMSService.cs",
@@ -279,7 +391,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "school_management_system\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Services\\EmailService.cs",
+              "RelativeToolTip": "school_management_system\\Services\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T15:47:41.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Create.cshtml",
+              "RelativeDocumentMoniker": "school_management_system\\Views\\Students\\Create.cshtml",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Create.cshtml",
+              "RelativeToolTip": "school_management_system\\Views\\Students\\Create.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAkwFUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-06T16:54:38.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "SMSHistory.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\SMS\\SMSHistory.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\SMS\\SMSHistory.cshtml",
@@ -291,7 +427,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 15,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Delete.cshtml",
+              "RelativeDocumentMoniker": "school_management_system\\Views\\Students\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Delete.cshtml",
+              "RelativeToolTip": "school_management_system\\Views\\Students\\Delete.cshtml",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-06T17:01:01.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Details.cshtml",
+              "RelativeDocumentMoniker": "school_management_system\\Views\\Students\\Details.cshtml",
+              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Details.cshtml",
+              "RelativeToolTip": "school_management_system\\Views\\Students\\Details.cshtml",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-06T17:01:08.786Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
               "Title": "SendSMS.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\SMS\\SendSMS.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\SMS\\SendSMS.cshtml",
@@ -303,7 +463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 17,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "school_management_system\\Controllers\\AccountController.cs",
@@ -315,46 +475,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AttendancesController.cs",
-              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\AttendancesController.cs",
-              "RelativeDocumentMoniker": "school_management_system\\Controllers\\AttendancesController.cs",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\AttendancesController.cs",
-              "RelativeToolTip": "school_management_system\\Controllers\\AttendancesController.cs",
-              "ViewState": "AgIAAAQBAAAAAAAAAAAqwBkBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T14:37:28.058Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MarkAttendance.cshtml",
-              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\MarkAttendance.cshtml",
-              "RelativeDocumentMoniker": "school_management_system\\Views\\Attendances\\MarkAttendance.cshtml",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\MarkAttendance.cshtml",
-              "RelativeToolTip": "school_management_system\\Views\\Attendances\\MarkAttendance.cshtml",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAkwKgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T16:07:04.147Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Profile.cshtml",
-              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Profile.cshtml",
-              "RelativeDocumentMoniker": "school_management_system\\Views\\Students\\Profile.cshtml",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Students\\Profile.cshtml",
-              "RelativeToolTip": "school_management_system\\Views\\Students\\Profile.cshtml",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAJMAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T14:35:50.293Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 16,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Program.cs",
               "RelativeDocumentMoniker": "school_management_system\\Program.cs",
@@ -366,7 +487,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 18,
               "Title": "NotificationService.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Services\\NotificationService.cs",
               "RelativeDocumentMoniker": "school_management_system\\Services\\NotificationService.cs",
@@ -378,7 +499,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 23,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\SMS\\Index.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\SMS\\Index.cshtml",
@@ -390,7 +511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 22,
               "Title": "SMSController.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\SMSController.cs",
               "RelativeDocumentMoniker": "school_management_system\\Controllers\\SMSController.cs",
@@ -402,7 +523,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 21,
               "Title": "SMSLog.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Models\\SMSLog.cs",
               "RelativeDocumentMoniker": "school_management_system\\Models\\SMSLog.cs",
@@ -414,31 +535,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "StudentAttendance.cshtml",
-              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\StudentAttendance.cshtml",
-              "RelativeDocumentMoniker": "school_management_system\\Views\\Attendances\\StudentAttendance.cshtml",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\StudentAttendance.cshtml",
-              "RelativeToolTip": "school_management_system\\Views\\Attendances\\StudentAttendance.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T14:39:09.885Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "AttendanceDashboard.cshtml",
-              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\AttendanceDashboard.cshtml",
-              "RelativeDocumentMoniker": "school_management_system\\Views\\Attendances\\AttendanceDashboard.cshtml",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Attendances\\AttendanceDashboard.cshtml",
-              "RelativeToolTip": "school_management_system\\Views\\Attendances\\AttendanceDashboard.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T14:38:41.985Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 27,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\Account\\Register.cshtml",
@@ -450,7 +547,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 26,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\Account\\Login.cshtml",
@@ -462,7 +559,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 28,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSalaryPayments\\Create.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSalaryPayments\\Create.cshtml",
@@ -474,7 +571,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 29,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSalaryPayments\\Delete.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSalaryPayments\\Delete.cshtml",
@@ -486,7 +583,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 30,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSalaryPayments\\Details.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSalaryPayments\\Details.cshtml",
@@ -498,7 +595,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 31,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSalaryPayments\\Edit.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSalaryPayments\\Edit.cshtml",
@@ -510,7 +607,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 32,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSalaryPayments\\Index.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSalaryPayments\\Index.cshtml",
@@ -522,7 +619,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 43,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSubjects\\Details.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSubjects\\Details.cshtml",
@@ -534,7 +631,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 36,
               "Title": "TeacherSalariesController.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\TeacherSalariesController.cs",
               "RelativeDocumentMoniker": "school_management_system\\Controllers\\TeacherSalariesController.cs",
@@ -546,7 +643,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 33,
               "Title": "TeacherSalaryPaymentsController.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\TeacherSalaryPaymentsController.cs",
               "RelativeDocumentMoniker": "school_management_system\\Controllers\\TeacherSalaryPaymentsController.cs",
@@ -558,7 +655,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 42,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSubjects\\Create.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSubjects\\Create.cshtml",
@@ -570,7 +667,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 41,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSubjects\\Index.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSubjects\\Index.cshtml",
@@ -582,7 +679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 38,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSalaries\\Delete.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSalaries\\Delete.cshtml",
@@ -594,7 +691,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 37,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSalaries\\Details.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSalaries\\Details.cshtml",
@@ -606,7 +703,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 34,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSalaries\\Edit.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSalaries\\Edit.cshtml",
@@ -618,7 +715,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 35,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSalaries\\Index.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSalaries\\Index.cshtml",
@@ -630,7 +727,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 40,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSubjects\\Edit.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSubjects\\Edit.cshtml",
@@ -642,7 +739,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 39,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Views\\TeacherSalaries\\Create.cshtml",
               "RelativeDocumentMoniker": "school_management_system\\Views\\TeacherSalaries\\Create.cshtml",
@@ -654,7 +751,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 44,
               "Title": "TeacherSubjectsController.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\TeacherSubjectsController.cs",
               "RelativeDocumentMoniker": "school_management_system\\Controllers\\TeacherSubjectsController.cs",
@@ -666,7 +763,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 45,
               "Title": "SubjectsController.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\SubjectsController.cs",
               "RelativeDocumentMoniker": "school_management_system\\Controllers\\SubjectsController.cs",
@@ -678,19 +775,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "SectionsController.cs",
-              "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\SectionsController.cs",
-              "RelativeDocumentMoniker": "school_management_system\\Controllers\\SectionsController.cs",
-              "ToolTip": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\SectionsController.cs",
-              "RelativeToolTip": "school_management_system\\Controllers\\SectionsController.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAwwEYAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T12:45:27.267Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 46,
               "Title": "ClassesController.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Controllers\\ClassesController.cs",
               "RelativeDocumentMoniker": "school_management_system\\Controllers\\ClassesController.cs",
@@ -703,7 +788,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 47,
               "Title": "Class.cs",
               "DocumentMoniker": "C:\\Users\\islam\\source\\repos\\school_management_system\\school_management_system\\Models\\Class.cs",
               "RelativeDocumentMoniker": "school_management_system\\Models\\Class.cs",

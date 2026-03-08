@@ -14,4 +14,42 @@
         View Monthly Report
     </a>
 
-</div>
+
+
+    </div>
+
+
+
+    <h2>Attendance Dashboard</h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card bg-primary text-white p-3">
+                <h4>Total Students</h4>
+                <h2>@ViewBag.TotalStudents</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-success text-white p-3">
+                <h4>Present Today</h4>
+                <h2>@ViewBag.Present</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-danger text-white p-3">
+                <h4>Absent Today</h4>
+                <h2>@ViewBag.Absent</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-warning text-white p-3">
+                <h4>Late</h4>
+                <h2>@ViewBag.Late</h2>
+            </div>
+        </div>
+
+    </div>

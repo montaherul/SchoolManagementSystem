@@ -55,7 +55,6 @@
 
         </div>
 
-
         <!-- Personal Information -->
         <div class="col-md-8">
 
@@ -89,7 +88,6 @@
                 </div>
 
             </div>
-
 
             <!-- Parent Information -->
             <div class="card shadow mb-3">
@@ -127,7 +125,6 @@
 
     </div>
 
-
     <!-- Quick Actions -->
     <div class="card shadow mt-3">
 
@@ -150,13 +147,104 @@
                 View Attendance
             </a>
 
-            <a class="btn btn-warning m-2">
+            <a asp-controller="Results"
+                   asp-action="StudentResults"
+                   asp-route-id="@Model.StudentID"
+                   class="btn btn-warning m-2">
                 View Results
             </a>
 
             <a class="btn btn-info m-2">
                 Fees Details
             </a>
+
+        </div>
+
+    </div>
+
+    <!-- Exam Results -->
+    <div class="card shadow mt-3">
+
+        <div class="card-header bg-warning text-dark">
+            My Exam Results
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered">
+
+                <thead>
+                    <tr>
+                        <th>Exam</th>
+                        @* <th>Subject</th>
+                        <th>Marks</th>
+
+                        <th>Total</th> *@
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @if (ViewBag.Results != null && ViewBag.Results.Count > 0)
+                    {
+                        foreach (var r in ViewBag.Results)
+                        {
+                            <tr>
+                                <td>@r.Exam.ExamName</td>
+
+                                @* <td>@r.Subject.SubjectName</td> *@
+
+                                @* <td>@r.MarksObtained</td> *@
+                                <td>@r.TotalMarks</td>
+                                <td>@r.Grade</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">
+                                No results available
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- Upcoming Exams -->
+    <div class="card shadow mt-3">
+
+        <div class="card-header bg-info text-white">
+            Upcoming Exams
+        </div>
+
+        <div class="card-body">
+
+            <ul>
+
+                @if (ViewBag.Exams != null && ViewBag.Exams.Count > 0)
+                {
+                    foreach (var exam in ViewBag.Exams)
+                    {
+                        <li>
+                            @exam.ExamName -
+                            @exam.ExamDate.ToString("dd MMM yyyy")
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li class="text-muted">No upcoming exams</li>
+                }
+
+            </ul>
 
         </div>
 

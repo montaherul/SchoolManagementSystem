@@ -259,6 +259,20 @@ namespace school_management_system.Controllers
             if (student == null)
                 return NotFound();
 
+            // Exams for student's class
+            var exams = await _context.Exams
+                .Where(e => e.ClassID == student.ClassID)
+                .ToListAsync();
+
+            // Results for this student
+            var results = await _context.Results
+                .Where(r => r.StudentID == id)
+                .Include(r => r.Exam)
+                .ToListAsync();
+
+            ViewBag.Exams = exams;
+            ViewBag.Results = results;
+
             return View(student);
         }
 
