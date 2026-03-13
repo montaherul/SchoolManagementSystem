@@ -2,11 +2,26 @@ using Microsoft.EntityFrameworkCore;
 using Rotativa.AspNetCore;
 using school_management_system;
 using school_management_system.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services
 builder.Services.AddControllersWithViews();
+
+// Authentication (cookie) and authorization roles/policies
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/AccessDenied";
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireTeacher", policy => policy.RequireRole("Teacher", "Admin"));
+    options.AddPolicy("RequireAdmin", policy => policy.RequireRole("Admin"));
+});
 
 // Database
 builder.Services.AddDbContext<MyDBContext>(options =>
@@ -22,6 +37,8 @@ builder.Services.AddSession(options =>
 builder.Services.AddScoped<SMSService>();
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<NotificationService>();
+builder.Services.AddScoped<school_management_system.Services.ResultCalculator>();
+builder.Services.AddScoped<school_management_system.Services.StudentPromotionService>();
 
 var app = builder.Build();
 
@@ -44,6 +61,7 @@ app.UseRouting();
 app.UseSession();
 
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 // Default Route

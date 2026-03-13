@@ -1,0 +1,85 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* Marks entry UI: shows students (rows) and subjects (columns). Submits parallel lists to controller save endpoint. *@
+@{
+    var exam = ViewBag.Exam as school_management_system.Models.Exam;
+    var students = ViewBag.Students as List<school_management_system.Models.Student> ?? new List<school_management_system.Models.Student>();
+    var subjects = ViewBag.Subjects as List<school_management_system.Models.Subject> ?? new List<school_management_system.Models.Subject>();
+    var existingMarks = ViewBag.ExistingMarks as List<school_management_system.Models.Mark> ?? new List<school_management_system.Models.Mark>();
+}
+
+<h2>Marks Entry for @exam?.ExamName (@exam?.ExamDate.ToShortDateString())</h2>
+
+<form id="marksForm" method="post" action="/marks-entry/save">
+    <input type="hidden" name="examId" value="@exam?.ExamID" />
+    <table class="table table-sm table-bordered">
+        <thead>
+            <tr>
+                <th>Student</th>
+                @foreach(var sub in subjects)
+                {
+                    <th>@sub.SubjectName<br/>(@sub.TotalMarks)</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(var s in students)
+        {
+            <tr>
+                <td>@s.FirstName @s.LastName</td>
+                @foreach(var sub in subjects)
+                {
+                    var existing = existingMarks.FirstOrDefault(m => m.StudentID == s.StudentID && m.SubjectID == sub.SubjectID && m.ExamID == exam?.ExamID);
+                    <td>
+                        <input type="number" min="0" max="@sub.TotalMarks" class="form-control mark-input" data-student-id="@s.StudentID" data-subject-id="@sub.SubjectID" value="@(existing?.Marks.ToString() ?? "")" />
+                    </td>
+                }
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <button type="button" id="saveBtn" class="btn btn-primary">Save Marks</button>
+    <a asp-controller="Exams" asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
+
+<hr />
+<h4>Bulk Upload (CSV)</h4>
+<form method="post" enctype="multipart/form-data" action="/marks-entry/upload-csv">
+    <input type="hidden" name="examId" value="@exam?.ExamID" />
+    <div class="form-group">
+        <input type="file" name="file" accept=".csv" />
+    </div>
+    <button type="submit" class="btn btn-info">Upload CSV</button>
+    <p class="text-muted">CSV format: studentId,subjectId,marks (one per line)</p>
+</form>
+
+<script>
+    document.getElementById('saveBtn').addEventListener('click', function(){
+        var inputs = document.querySelectorAll('.mark-input');
+        var form = document.getElementById('marksForm');
+
+        // remove any previous hidden inputs we added
+        var prev = document.querySelectorAll('.generated-input');
+        prev.forEach(function(p){ p.parentNode.removeChild(p); });
+
+        inputs.forEach(function(inp){
+            var sid = inp.getAttribute('data-student-id');
+            var subid = inp.getAttribute('data-subject-id');
+            var val = inp.value || '0';
+
+            var si = document.createElement('input');
+            si.type = 'hidden'; si.name = 'studentIds'; si.value = sid; si.className = 'generated-input';
+            var su = document.createElement('input');
+            su.type = 'hidden'; su.name = 'subjectIds'; su.value = subid; su.className = 'generated-input';
+            var ma = document.createElement('input');
+            ma.type = 'hidden'; ma.name = 'marks'; ma.value = val; ma.className = 'generated-input';
+
+            form.appendChild(si); form.appendChild(su); form.appendChild(ma);
+        });
+
+        form.submit();
+    });
+</script>

@@ -1,0 +1,189 @@
+﻿@model school_management_system.Models.Student
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-action="Create" enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="AdmissionNumber"></label>
+                <input asp-for="AdmissionNumber" class="form-control" />
+                <span asp-validation-for="AdmissionNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Gender"></label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                <span asp-validation-for="Gender"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth"></label>
+                <input asp-for="DateOfBirth" type="date" class="form-control" />
+                <span asp-validation-for="DateOfBirth"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Address"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ParentName"></label>
+                <input asp-for="ParentName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ParentPhone"></label>
+                <input asp-for="ParentPhone" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ParentEmail"></label>
+                <input asp-for="ParentEmail" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AdmissionDate"></label>
+                <input asp-for="AdmissionDate" type="date" class="form-control" />
+            </div>
+
+            <!-- CLASS DROPDOWN -->
+
+            <div class="form-group">
+            <select id="classDropdown" asp-for="ClassID"
+                    asp-items="ViewBag.ClassID"
+                    class="form-control">
+            </select>
+            </div>
+
+            @* <div class="form-group">
+                <label asp-for="ClassID"></label>
+                <select asp-for="ClassID"
+                        asp-items="ViewBag.ClassID"
+                        class="form-control">
+                </select>
+
+            </div> *@
+
+            <!-- SECTION DROPDOWN -->
+            <div class="form-group">
+            <select id="sectionDropdown" asp-for="SectionID"
+                    class="form-control">
+                <option value="">Select Section</option>
+            </select>
+            </div>
+
+            @* <div class="form-group">
+                <label asp-for="SectionID"></label>
+                <select asp-for="SectionID"
+                        asp-items="ViewBag.SectionID"
+                        class="form-control">
+                </select>
+            </div> *@
+
+            <div class="form-group">
+                <label asp-for="Status"></label>
+                <select asp-for="Status" class="form-control">
+                    <option value="">Select Status</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+
+            <!-- PHOTO -->
+
+            <div class="form-group">
+                <label>Student Photo</label>
+                <input type="file" asp-for="Photo" class="form-control" />
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Create Student" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const classDropdown = document.getElementById("classDropdown");
+        const sectionDropdown = document.getElementById("sectionDropdown");
+
+        classDropdown.addEventListener("change", function () {
+
+            const classId = this.value;
+
+            if (!classId) {
+                sectionDropdown.innerHTML = '<option value="">Select Section</option>';
+                return;
+            }
+
+            sectionDropdown.innerHTML = '<option>Loading...</option>';
+
+            fetch('/Students/GetSections?classId=' + classId)
+            .then(response => response.json())
+            .then(data => {
+
+                sectionDropdown.innerHTML = '<option value="">Select Section</option>';
+
+                data.forEach(section => {
+
+                    const option = document.createElement("option");
+
+                    option.value = section.sectionID;
+                    option.text = section.sectionName;
+
+                    sectionDropdown.appendChild(option);
+
+                });
+
+            })
+            .catch(error => {
+
+                console.error("Error:", error);
+
+                sectionDropdown.innerHTML = '<option>Error loading sections</option>';
+
+            });
+
+        });
+
+    });
+
+</script>

@@ -1,0 +1,115 @@
+﻿@model IEnumerable<school_management_system.Models.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Students</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add Student</a>
+</p>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+
+            <th>Admission No</th>
+
+            <th>Photo</th>
+
+            <th>First Name</th>
+
+            <th>Last Name</th>
+
+            <th>Gender</th>
+
+            <th>DOB</th>
+
+            <th>Class</th>
+
+            <th>Section</th>
+
+            <th>Status</th>
+
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.AdmissionNumber</td>
+
+                <td>
+                    @if (!string.IsNullOrEmpty(item.PhotoPath))
+                    {
+                        <img src="@item.PhotoPath"
+                             width="60"
+                             height="60"
+                             style="border-radius:50%;object-fit:cover;border:1px solid #ddd;" />
+                    }
+                    else
+                    {
+                        <img src="/images/students/default.png"
+                             width="60"
+                             height="60" />
+                    }
+                </td>
+
+                <td>@item.FirstName</td>
+
+                <td>@item.LastName</td>
+
+                <td>@item.Gender</td>
+
+                <td>@item.DateOfBirth.ToString("dd MMM yyyy")</td>
+
+                <td>
+                    @item.Class?.ClassName
+                </td>
+
+                <td>
+                    @item.Section?.SectionName
+                </td>
+
+                <td>@item.Status</td>
+
+                <td>
+
+                    <a asp-action="Profile"
+                           asp-route-id="@item.StudentID"
+                           class="btn btn-info btn-sm">
+                        Dashboard
+                    </a>
+
+                    <a asp-action="Edit"
+                           asp-route-id="@item.StudentID"
+                           class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <a asp-action="Details"
+                           asp-route-id="@item.StudentID"
+                           class="btn btn-success btn-sm">
+                        Details
+                    </a>
+
+                    <a asp-action="Delete"
+                           asp-route-id="@item.StudentID"
+                           class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>

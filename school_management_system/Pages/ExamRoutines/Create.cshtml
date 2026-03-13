@@ -1,0 +1,39 @@
+@page
+@model school_management_system.Pages.ExamRoutines.CreateModel
+
+<h2>Create Exam Routine</h2>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Routine.ExamID">Exam</label>
+        <select asp-for="Routine.ExamID" asp-items="Model.Exams" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Routine.SubjectID">Subject</label>
+        <select asp-for="Routine.SubjectID" asp-items="Model.Subjects" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Routine.Date"></label>
+        <input asp-for="Routine.Date" type="date" class="form-control" />
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Routine.StartTime">Start Time</label>
+            <input asp-for="Routine.StartTime" type="time" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Routine.EndTime">End Time</label>
+            <input asp-for="Routine.EndTime" type="time" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Routine.Room">Room</label>
+        <input asp-for="Routine.Room" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Routine.InvigilatorID">Invigilator</label>
+        <select asp-for="Routine.InvigilatorID" asp-items="Model.Teachers" class="form-control">
+            <option value="">-- None --</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Routine</button>
+</form>

@@ -10,6 +10,9 @@ namespace school_management_system.Models
 
         [Required]
         public string SubjectName { get; set; }
+        public int TotalMarks { get; set; } = 100;
+
+        public int PassMarks { get; set; } = 33;
 
         // Navigation property
         public ICollection<ClassSubject> ClassSubjects { get; set; }

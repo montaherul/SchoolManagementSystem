@@ -12,6 +12,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th>photo</th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
@@ -27,9 +28,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Address)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoPath)
-            </th>
+        
             <th>
                 @Html.DisplayNameFor(model => model.HireDate)
             </th>
@@ -39,6 +38,21 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+
+                <td>
+                    @if (!string.IsNullOrEmpty(item.PhotoPath))
+                    {
+                        <img src="@item.PhotoPath"
+                             width="60"
+                             height="60"
+                             style="border-radius:50%;object-fit:cover;border:1px solid #ddd;" />
+                    }
+                    else
+                    {
+                        <img src="/images/teachers/default.png"
+                             width="60"
+                             height="60" />
+                    }
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -54,13 +68,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoPath)
-            </td>
+  
             <td>
                 @Html.DisplayFor(modelItem => item.HireDate)
             </td>
-            <td>
+            <td> 
+                <a asp-action="Profile" asp-route-id="@item.TeacherID">TeacherProfile</a> |
                 <a asp-action="Edit" asp-route-id="@item.TeacherID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.TeacherID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.TeacherID">Delete</a>

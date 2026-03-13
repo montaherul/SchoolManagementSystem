@@ -3,7 +3,9 @@ wwwroot\favicon.ico
 wwwroot\images\students\default.png
 wwwroot\images\students\Montaherul_haihai.jpg
 wwwroot\images\stuffs\default.png
+wwwroot\images\teachers\89d8e4f9-6a75-41b7-9bef-c58d6d75d843.png
 wwwroot\images\teachers\default.png
+wwwroot\images\teachers\f0492717-d4e7-460c-9225-6473ce260c94.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map

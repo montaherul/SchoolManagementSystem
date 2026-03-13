@@ -1,0 +1,35 @@
+@page
+@model school_management_system.Pages.ExamRoutines.IndexModel
+
+<h2>Exam Routines</h2>
+<p><a asp-page="Create">Create Routine</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Exam</th>
+            <th>Subject</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Room</th>
+            <th>Invigilator</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach(var r in Model.Routines)
+{
+    <tr>
+        <td>@r.Exam?.ExamName</td>
+        <td>@r.Subject?.SubjectName</td>
+        <td>@r.Date.ToShortDateString()</td>
+        <td>@r.StartTime - @r.EndTime</td>
+        <td>@r.Room</td>
+        <td>@(r.Invigilator == null ? "" : (r.Invigilator.FirstName + " " + r.Invigilator.LastName))</td>
+        <td>
+            <a asp-page="Edit" asp-route-id="@r.ExamRoutineID">Edit</a> |
+            <a asp-page="Delete" asp-route-id="@r.ExamRoutineID">Delete</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

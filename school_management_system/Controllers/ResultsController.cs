@@ -10,13 +10,16 @@ using school_management_system.Models;
 
 namespace school_management_system.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.Authorize(Policy = "RequireAdmin")]
     public class ResultsController : Controller
     {
         private readonly MyDBContext _context;
+        private readonly school_management_system.Services.ResultCalculator _calculator;
 
-        public ResultsController(MyDBContext context)
+        public ResultsController(MyDBContext context, school_management_system.Services.ResultCalculator calculator)
         {
             _context = context;
+            _calculator = calculator;
         }
 
         // GET: Results
@@ -165,6 +168,41 @@ namespace school_management_system.Controllers
         private bool ResultExists(int id)
         {
             return _context.Results.Any(e => e.ResultID == id);
+        }
+
+        // POST: Results/Generate/5
+        [HttpPost]
+        public async Task<IActionResult> Generate(int id)
+        {
+            await _calculator.GenerateResultsForExamAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: Results/Publish/5
+        [HttpPost]
+        public async Task<IActionResult> Publish(int id)
+        {
+            var list = _context.Results.Where(r => r.ExamID == id);
+            foreach(var r in list)
+            {
+                r.IsPublished = true;
+                r.PublishedAt = DateTime.UtcNow;
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: Results/Lock/5
+        [HttpPost]
+        public async Task<IActionResult> Lock(int id)
+        {
+            var list = _context.Results.Where(r => r.ExamID == id);
+            foreach(var r in list)
+            {
+                r.IsLocked = true;
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

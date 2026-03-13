@@ -96,6 +96,23 @@ namespace school_management_system.Controllers
                     student.PhotoPath = "/images/students/" + fileName;
                 }
 
+                // Ensure AdmissionYear is set
+                student.AdmissionYear = student.AdmissionDate != default ? student.AdmissionDate.Year : DateTime.UtcNow.Year;
+                // Ensure AdmissionYear is set
+                student.AdmissionYear = student.AdmissionDate != default
+                    ? student.AdmissionDate.Year
+                    : DateTime.UtcNow.Year;
+
+                // Auto generate RollNumber if empty
+                if (!student.RollNumber.HasValue || student.RollNumber == 0)
+                {
+                    var lastRoll = await _context.Students
+                        .Where(s => s.ClassID == student.ClassID)
+                        .MaxAsync(s => (int?)s.RollNumber);
+
+                    student.RollNumber = (lastRoll ?? 0) + 1;
+                }
+
                 _context.Add(student);
                 await _context.SaveChangesAsync();
 
@@ -153,9 +170,16 @@ namespace school_management_system.Controllers
                         .AsNoTracking()
                         .FirstOrDefaultAsync(s => s.StudentID == id);
 
+                    if (existingStudent == null)
+                        return NotFound();
+
+                    // PHOTO UPDATE
                     if (student.Photo != null)
                     {
                         string folder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/students");
+
+                        if (!Directory.Exists(folder))
+                            Directory.CreateDirectory(folder);
 
                         string fileName = Guid.NewGuid().ToString() +
                                           Path.GetExtension(student.Photo.FileName);
@@ -174,6 +198,12 @@ namespace school_management_system.Controllers
                         student.PhotoPath = existingStudent.PhotoPath;
                     }
 
+                    // KEEP EXISTING ROLL IF EMPTY
+                    if (!student.RollNumber.HasValue || student.RollNumber == 0)
+                    {
+                        student.RollNumber = existingStudent.RollNumber;
+                    }
+
                     _context.Update(student);
                     await _context.SaveChangesAsync();
                 }
@@ -189,7 +219,6 @@ namespace school_management_system.Controllers
             }
 
             ViewData["ClassID"] = new SelectList(_context.Classes, "ClassID", "ClassName", student.ClassID);
-
             ViewData["SectionID"] = new SelectList(_context.Sections, "SectionID", "SectionName", student.SectionID);
 
             return View(student);
@@ -265,15 +294,50 @@ namespace school_management_system.Controllers
                 .ToListAsync();
 
             // Results for this student
-            var results = await _context.Results
+            // Build detailed exam-wise results with subject marks
+            var examResults = new List<school_management_system.Models.StudentExamResult>();
+
+            var studentResults = await _context.Results
                 .Where(r => r.StudentID == id)
                 .Include(r => r.Exam)
                 .ToListAsync();
 
+            foreach (var res in studentResults)
+            {
+                var marks = await _context.Marks
+                    .Where(m => m.StudentID == id && m.ExamID == res.ExamID)
+                    .Include(m => m.Subject)
+                    .ToListAsync();
+
+                var ser = new school_management_system.Models.StudentExamResult
+                {
+                    Exam = res.Exam,
+                    Marks = marks,
+                    TotalMarks = res.TotalMarks,
+                    Percentage = res.Percentage,
+                    GPA = res.GPA,
+                    Grade = res.Grade,
+                    Position = res.Position,
+                    IsPublished = res.IsPublished
+                };
+
+                examResults.Add(ser);
+            }
+
             ViewBag.Exams = exams;
-            ViewBag.Results = results;
+            ViewBag.Results = examResults;
 
             return View(student);
+        }
+
+        // Admin action: promote students from one class to next class based on exam ranking
+        // POST: /Students/Promote
+        [HttpPost]
+        public async Task<IActionResult> Promote(int fromClassId, int toClassId, int examId, int targetYear)
+        {
+            var promo = new school_management_system.Services.StudentPromotionService(_context);
+            await promo.PromoteClassByResultsAsync(fromClassId, toClassId, examId, targetYear);
+            return RedirectToAction(nameof(Index));
         }
 
         // =========================

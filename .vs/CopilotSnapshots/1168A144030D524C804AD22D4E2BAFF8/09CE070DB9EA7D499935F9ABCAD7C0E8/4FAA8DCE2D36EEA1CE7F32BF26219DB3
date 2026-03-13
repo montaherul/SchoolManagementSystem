@@ -1,0 +1,198 @@
+﻿@model school_management_system.Models.Student
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Student</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="Edit" enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="StudentID" />
+            <input type="hidden" asp-for="PhotoPath" />
+
+            <div class="form-group">
+                <label asp-for="AdmissionNumber"></label>
+                <input asp-for="AdmissionNumber" class="form-control" />
+                <span asp-validation-for="AdmissionNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Current Photo</label><br />
+
+                @if (!string.IsNullOrEmpty(Model.PhotoPath))
+                {
+                    <img src="@Model.PhotoPath"
+                         width="120"
+                         height="120"
+                         style="border-radius:6px;" />
+                }
+                else
+                {
+                    <img src="/images/students/default.png"
+                         width="120"
+                         height="120" />
+                }
+
+            </div>
+
+            <div class="form-group">
+                <label>Change Photo</label>
+                <input type="file" asp-for="Photo" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Gender"></label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth"></label>
+                <input asp-for="DateOfBirth" type="date" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Address"></label>
+                <input asp-for="Address" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ParentName"></label>
+                <input asp-for="ParentName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ParentPhone"></label>
+                <input asp-for="ParentPhone" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ParentEmail"></label>
+                <input asp-for="ParentEmail" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AdmissionDate"></label>
+                <input asp-for="AdmissionDate" type="date" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Class</label>
+            <select id="classDropdown"
+                    asp-for="ClassID"
+                    class="form-control"
+                    asp-items="ViewBag.ClassID">
+            </select>
+            </div>
+
+            @* <div class="form-group">
+                <label>Class</label>
+                <select asp-for="ClassID"
+                        class="form-control"
+                        asp-items="ViewBag.ClassID">
+                    <option value="">Select Class</option>
+                </select>
+
+            </div> *@
+
+            @* <div class="form-group">
+                <label>Section</label>
+                <select asp-for="SectionID"
+                        class="form-control"
+                        asp-items="ViewBag.SectionID">
+                    <option value="">Select Section</option>
+                </select>
+            </div> *@
+
+            <div class="form-group">
+                <label>Section</label>
+            <select id="sectionDropdown"
+                    asp-for="SectionID"
+                    class="form-control"
+                    asp-items="ViewBag.SectionID">
+            </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status"></label>
+                <select asp-for="Status" class="form-control">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const classDropdown = document.getElementById("classDropdown");
+        const sectionDropdown = document.getElementById("sectionDropdown");
+
+        classDropdown.addEventListener("change", function () {
+
+            const classId = this.value;
+
+            if (!classId) {
+                sectionDropdown.innerHTML = '<option value="">Select Section</option>';
+                return;
+            }
+
+            sectionDropdown.innerHTML = '<option>Loading...</option>';
+
+            fetch('/Students/GetSections?classId=' + classId)
+            .then(response => response.json())
+            .then(data => {
+
+                sectionDropdown.innerHTML = '<option value="">Select Section</option>';
+
+                data.forEach(section => {
+
+                    const option = document.createElement("option");
+
+                    option.value = section.sectionID;
+                    option.text = section.sectionName;
+
+                    sectionDropdown.appendChild(option);
+
+                });
+
+            });
+
+        });
+
+    });
+
+</script>

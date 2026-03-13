@@ -1,0 +1,99 @@
+@page
+@model school_management_system.Pages.MarksEntry.IndexModel
+@{
+    ViewData["Title"] = "Marks Entry";
+}
+
+<h2>Marks Entry</h2>
+
+<form method="get">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label>Exam</label>
+            <select asp-for="ExamId" class="form-control" asp-items="@(new Microsoft.AspNetCore.Mvc.Rendering.SelectList(ViewData["Exams"] as IEnumerable<dynamic>, "ExamID", "ExamName", Model.ExamId))"></select>
+        </div>
+        <div class="form-group col-md-4">
+            <label>Class</label>
+            <select asp-for="ClassId" class="form-control" asp-items="@(new Microsoft.AspNetCore.Mvc.Rendering.SelectList(ViewData["Classes"] as IEnumerable<dynamic>, "ClassID", "ClassName", Model.ClassId))"></select>
+        </div>
+        <div class="form-group col-md-4 align-self-end">
+            <button type="submit" class="btn btn-primary">Load</button>
+        </div>
+    </div>
+</form>
+
+@if (Model.Exam != null && Model.Students.Any() && Model.Subjects.Any())
+{
+    <form method="post">
+        <input type="hidden" asp-for="ExamId" />
+        <input type="hidden" asp-for="ClassId" />
+        <table class="table table-sm table-bordered">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    @foreach (var s in Model.Subjects)
+                    {
+                        <th>@s.SubjectName<br/>(@s.TotalMarks)</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Students.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.Students[i].FirstName @Model.Students[i].LastName</td>
+                        @for (int j = 0; j < Model.Subjects.Count; j++)
+                        {
+                            var sub = Model.Subjects[j];
+                            var existing = Model.ExistingMarks.FirstOrDefault(m => m.StudentID == Model.Students[i].StudentID && m.SubjectID == sub.SubjectID && m.ExamID == Model.ExamId);
+                            <td>
+                                <input type="hidden" name="studentIds" value="@Model.Students[i].StudentID" />
+                                <input type="hidden" name="subjectIds" value="@sub.SubjectID" />
+                                <input type="number" name="marks" min="0" max="@sub.TotalMarks" class="form-control" value="@(existing?.Marks.ToString() ?? "")" />
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Save Marks</button>
+    </form>
+
+    <hr />
+    <form method="post" enctype="multipart/form-data" asp-page-handler="Upload">
+        <input type="hidden" asp-for="ExamId" />
+        <input type="hidden" asp-for="ClassId" />
+        <div class="form-group">
+            <input type="file" name="file" />
+        </div>
+        <button type="submit" class="btn btn-info">Upload CSV</button>
+    </form>
+    <form method="post" enctype="multipart/form-data" asp-page-handler="UploadExcel" class="mt-2">
+        <input type="hidden" asp-for="ExamId" />
+        <input type="hidden" asp-for="ClassId" />
+        <div class="form-group">
+            <input type="file" name="file" accept=".xlsx,.xls" />
+        </div>
+        <button type="submit" class="btn btn-info">Upload Excel</button>
+    </form>
+    @if(Model.RowsProcessed > 0)
+    {
+        <div class="alert alert-success mt-2">Processed @Model.RowsProcessed marks.</div>
+    }
+    @if(Model.ImportErrors.Any())
+    {
+        <div class="alert alert-danger mt-2">
+            <strong>Import errors:</strong>
+            <ul>
+            @foreach(var e in Model.ImportErrors)
+            {
+                <li>@e</li>
+            }
+            </ul>
+        </div>
+    }
+}
+else
+{
+    <p>Select exam and class and click Load.</p>
+}

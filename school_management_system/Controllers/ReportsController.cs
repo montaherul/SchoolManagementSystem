@@ -63,6 +63,92 @@ namespace school_management_system.Controllers
             return View(results);
         }
 
+        // Export results for an exam as Excel
+        public async Task<IActionResult> ExportResultsExcel(int examId)
+        {
+            var results = await _context.Results.Include(r => r.Student).Where(r => r.ExamID == examId).ToListAsync();
+            using var wb = new XLWorkbook();
+            var ws = wb.Worksheets.Add("Results");
+            ws.Cell(1, 1).Value = "StudentID";
+            ws.Cell(1, 2).Value = "RollNumber";
+            ws.Cell(1, 3).Value = "StudentName";
+            ws.Cell(1, 4).Value = "TotalMarks";
+            ws.Cell(1, 4).Value = "Percentage";
+            ws.Cell(1, 5).Value = "GPA";
+            ws.Cell(1, 6).Value = "Grade";
+            ws.Cell(1, 7).Value = "Position";
+
+            int row = 2;
+            foreach(var r in results)
+            {
+                ws.Cell(row, 1).Value = r.StudentID;
+                ws.Cell(row, 2).Value = r.Student?.RollNumber;
+                ws.Cell(row, 3).Value = (r.Student?.FirstName + " " + r.Student?.LastName)?.Trim();
+                ws.Cell(row, 4).Value = r.TotalMarks;
+                ws.Cell(row, 5).Value = r.Percentage;
+                ws.Cell(row, 6).Value = r.GPA;
+                ws.Cell(row, 7).Value = r.Grade;
+                ws.Cell(row, 8).Value = r.Position;
+                row++;
+            }
+
+            using var ms = new MemoryStream();
+            wb.SaveAs(ms);
+            ms.Position = 0;
+            return File(ms.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", $"results_exam_{examId}.xlsx");
+        }
+
+        // Export marks for a class and exam in matrix format (students x subjects)
+        public async Task<IActionResult> ExportMarksMatrix(int examId, int classId)
+        {
+            var students = await _context.Students.Where(s => s.ClassID == classId).ToListAsync();
+            var subjects = await _context.ClassSubjects.Where(cs => cs.ClassID == classId).Include(cs => cs.Subject).Select(cs => cs.Subject).ToListAsync();
+
+            using var wb = new XLWorkbook();
+            var ws = wb.Worksheets.Add("Marks");
+
+            ws.Cell(1, 1).Value = "StudentID";
+            ws.Cell(1, 2).Value = "RollNumber";
+            ws.Cell(1, 3).Value = "StudentName";
+            for (int j = 0; j < subjects.Count; j++)
+            {
+                ws.Cell(1, 3 + j).Value = subjects[j].SubjectName;
+            }
+
+            int row = 2;
+            foreach (var s in students)
+            {
+                ws.Cell(row, 1).Value = s.StudentID;
+                ws.Cell(row, 2).Value = s.RollNumber;
+                ws.Cell(row, 3).Value = s.FirstName + " " + s.LastName;
+                for (int j = 0; j < subjects.Count; j++)
+                {
+                    var sub = subjects[j];
+                    var mark = await _context.Marks.FirstOrDefaultAsync(m => m.ExamID == examId && m.StudentID == s.StudentID && m.SubjectID == sub.SubjectID);
+                    ws.Cell(row, 4 + j).Value = mark?.Marks ?? 0;
+                }
+                row++;
+            }
+
+            using var ms = new MemoryStream();
+            wb.SaveAs(ms);
+            ms.Position = 0;
+            return File(ms.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", $"marks_exam_{examId}_class_{classId}.xlsx");
+        }
+
+        // PDF report card per student using Rotativa (render Razor view to PDF)
+        public async Task<IActionResult> StudentReportPdf(int examId, int studentId)
+        {
+            var result = await _context.Results.Include(r => r.Student).Include(r => r.Exam).FirstOrDefaultAsync(r => r.ExamID == examId && r.StudentID == studentId);
+            if (result == null) return NotFound();
+
+            return new ViewAsPdf("StudentReport", result)
+            {
+                FileName = $"report_student_{studentId}_exam_{examId}.pdf",
+                PageSize = Rotativa.AspNetCore.Options.Size.A4
+            };
+        }
+
         // Payroll Report
         public IActionResult PayrollReport()
         {
@@ -72,7 +158,7 @@ namespace school_management_system.Controllers
 
             return View(payroll);
         }
-        public IActionResult StudentReportPDF()
+        public IActionResult StudentReportBulkPdf()
         {
             var students = _context.Students
                 .Include(s => s.Class)

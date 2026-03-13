@@ -30,6 +30,46 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Pages/ExamRoutines/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbVJvdXRpbmVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Pages/ExamRoutines/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbVJvdXRpbmVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Pages/ExamRoutines/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbVJvdXRpbmVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Pages/ExamRoutines/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbVJvdXRpbmVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Pages/Exams/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Pages/Exams/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Pages/Exams/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Pages/Exams/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Pages/Exams/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Pages/MarksEntry/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFya3NFbnRyeVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/islam/source/repos/school_management_system/school_management_system/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -196,6 +236,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/islam/source/repos/school_management_system/school_management_system/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Views/MarksEntry/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya3NFbnRyeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/islam/source/repos/school_management_system/school_management_system/Views/Marks/Create.cshtml]
@@ -464,6 +508,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/islam/source/repos/school_management_system/school_management_system/Views/Teachers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/islam/source/repos/school_management_system/school_management_system/Views/Teachers/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlcnNcUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/islam/source/repos/school_management_system/school_management_system/Views/_ViewImports.cshtml]

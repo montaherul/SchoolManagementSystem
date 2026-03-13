@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Student Profile";
 }
+@using System.Linq
 
 <div class="container mt-4">
 
@@ -39,6 +40,10 @@
                         Admission: @Model.AdmissionNumber
                     </p>
 
+                    <p class="text-muted">
+                        Roll No: @Model.RollNumber
+                    </p>
+
                     <p>
                         Class:
                         @Model.Class?.ClassName -
@@ -50,6 +55,22 @@
                     </span>
 
                 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var showMore = document.getElementById('showMoreExams');
+        if(showMore){
+            showMore.addEventListener('click', function(e){
+                e.preventDefault();
+                // simple expand: reveal all list items
+                var ul = this.closest('ul');
+                // reload the page with no truncation could be implemented server-side; for now just hide the link
+                this.style.display = 'none';
+                // optionally you could request full list by AJAX; left as-is
+            });
+        }
+    });
+</script>
 
             </div>
 
@@ -176,10 +197,7 @@
                 <thead>
                     <tr>
                         <th>Exam</th>
-                        @* <th>Subject</th>
-                        <th>Marks</th>
-
-                        <th>Total</th> *@
+                        <th>Total</th>
                         <th>Grade</th>
                     </tr>
                 </thead>
@@ -190,21 +208,83 @@
                     {
                         foreach (var r in ViewBag.Results)
                         {
+                            var examId = r.Exam?.ExamID ?? 0;
+                            IEnumerable<school_management_system.Models.Mark> marksEnum = (r.Marks as IEnumerable<school_management_system.Models.Mark>) ?? Enumerable.Empty<school_management_system.Models.Mark>();
+                            var overallPassed = marksEnum.Any() ? marksEnum.All(m => m.IsPassed) : false;
                             <tr>
-                                <td>@r.Exam.ExamName</td>
-
-                                @* <td>@r.Subject.SubjectName</td> *@
-
-                                @* <td>@r.MarksObtained</td> *@
+                                <td>
+                                    <strong>@r.Exam?.ExamName</strong>
+                                    <div class="mt-1">
+                                        @if(r.IsPublished)
+                                        {
+                                            if (overallPassed)
+                                            {
+                                                <span class="badge bg-success">Pass</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger">Fail</span>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">Not Published</span>
+                                        }
+                                    </div>
+                                </td>
                                 <td>@r.TotalMarks</td>
-                                <td>@r.Grade</td>
+                                <td>
+                                    @r.Grade
+                                    <div class="mt-1">
+                                        <a asp-controller="Reports" asp-action="StudentReportPdf" asp-route-examId="@examId" asp-route-studentId="@Model.StudentID" class="btn btn-sm btn-outline-primary">Download Marksheet (PDF)</a>
+                                        <button class="btn btn-sm btn-outline-secondary ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#examCollapse@examId" aria-expanded="false" aria-controls="examCollapse@examId">Details</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="collapse-row">
+                                <td colspan="3" class="p-0">
+                                    <div class="collapse" id="examCollapse@examId">
+                                        <div class="card card-body">
+                                            <table class="table table-sm mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Subject</th>
+                                                        <th>Marks</th>
+                                                        <th>Max</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                            @foreach(var m in marksEnum)
+                                                    {
+                                                        <tr>
+                                                            <td>@m.Subject?.SubjectName</td>
+                                                            <td>@m.Marks</td>
+                                                            <td>@(m.Subject?.TotalMarks ?? 100)</td>
+                                                            <td>
+                                                                @if(m.IsPassed)
+                                                                {
+                                                                    <span class="badge bg-success">Pass</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="badge bg-danger">Fail</span>
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         }
                     }
                     else
                     {
                         <tr>
-                            <td colspan="5" class="text-center text-muted">
+                            <td colspan="3" class="text-center text-muted">
                                 No results available
                             </td>
                         </tr>
@@ -228,15 +308,19 @@
         <div class="card-body">
 
             <ul>
-
-                @if (ViewBag.Exams != null && ViewBag.Exams.Count > 0)
+                @{ var examsList = ViewBag.Exams as IEnumerable<school_management_system.Models.Exam> ?? Enumerable.Empty<school_management_system.Models.Exam>(); }
+                @if (examsList.Any())
                 {
-                    foreach (var exam in ViewBag.Exams)
+                    foreach (var exam in examsList.Take(10))
                     {
                         <li>
                             @exam.ExamName -
                             @exam.ExamDate.ToString("dd MMM yyyy")
                         </li>
+                    }
+                    if(examsList.Count() > 10)
+                    {
+                        <li><a href="#" id="showMoreExams">Show more...</a></li>
                     }
                 }
                 else

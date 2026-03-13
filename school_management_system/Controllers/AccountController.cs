@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
 using SchoolManagementSystem.Models;
 using school_management_system;
 using System.Linq;
@@ -40,6 +43,19 @@ namespace SchoolManagementSystem.Controllers
 
             if (user != null)
             {
+                // create claims and sign in with cookie authentication
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
+                    new Claim(ClaimTypes.Name, user.Username ?? ""),
+                    new Claim(ClaimTypes.Role, user.Role?.RoleName ?? "")
+                };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                // also preserve session values for existing code that may use session
                 HttpContext.Session.SetString("UserID", user.UserID.ToString());
                 HttpContext.Session.SetString("Username", user.Username ?? "");
                 HttpContext.Session.SetString("Role", user.Role?.RoleName ?? "");
@@ -80,5 +96,7 @@ namespace SchoolManagementSystem.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
+     
+      
     }
 }

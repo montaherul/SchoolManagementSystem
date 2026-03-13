@@ -1,0 +1,27 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace school_management_system.Migrations
+{
+    public partial class AddStudentRollNumber : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AddColumn<string>(
+                name: "RollNumber",
+                table: "Students",
+                type: "nvarchar(50)",
+                maxLength: 50,
+                nullable: true);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "RollNumber",
+                table: "Students");
+        }
+    }
+}

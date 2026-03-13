@@ -8,21 +8,29 @@ namespace school_management_system.Models
         [Key]
         public int MarkID { get; set; }
 
+        [Required]
         public int StudentID { get; set; }
 
+        [Required]
         public int SubjectID { get; set; }
 
+        [Required]
         public int ExamID { get; set; }
 
+        [Required]
+        [Range(0, 100)]
         public int Marks { get; set; }
 
-        [ForeignKey("StudentID")]
+        public bool IsPassed { get; set; }
+
+        // Navigation properties
+        [ForeignKey(nameof(StudentID))]
         public Student? Student { get; set; }
 
-        [ForeignKey("SubjectID")]
+        [ForeignKey(nameof(SubjectID))]
         public Subject? Subject { get; set; }
 
-        [ForeignKey("ExamID")]
+        [ForeignKey(nameof(ExamID))]
         public Exam? Exam { get; set; }
     }
 }

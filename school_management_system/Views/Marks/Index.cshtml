@@ -1,53 +1,44 @@
 ﻿@model IEnumerable<school_management_system.Models.Mark>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Marks List";
 }
 
-<h1>Index</h1>
+<h2>Marks List</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Add Marks</a>
 </p>
-<table class="table">
+
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Marks)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Exam)
-            </th>
-            <th></th>
+            <th>Roll</th>
+            <th>Student Name</th>
+            <th>Subject</th>
+            <th>Exam</th>
+            <th>Marks</th>
+            <th width="150">Action</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Marks)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.StudentID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject.SubjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Exam.ExamID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MarkID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MarkID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MarkID">Delete</a>
-            </td>
-        </tr>
-}
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Student.RollNumber</td>
+                <td>@item.Student.FirstName @item.Student.LastName</td>
+                <td>@item.Subject.SubjectName</td>
+                <td>@item.Exam.ExamName</td>
+                <td>@item.Marks</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MarkID" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.MarkID" class="btn btn-info btn-sm">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.MarkID" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+
     </tbody>
 </table>

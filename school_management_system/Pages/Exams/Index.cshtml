@@ -1,0 +1,30 @@
+@page
+@model school_management_system.Pages.Exams.IndexModel
+
+<h2>Exams</h2>
+<p><a asp-page="Create">Create New Exam</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach(var e in Model.ExamList)
+{
+    <tr>
+        <td>@e.ExamName</td>
+        <td>@e.Class?.ClassName</td>
+        <td>@e.ExamDate.ToShortDateString()</td>
+        <td>
+            <a asp-page="Edit" asp-route-id="@e.ExamID">Edit</a> |
+            <a asp-page="Details" asp-route-id="@e.ExamID">Details</a> |
+            <a asp-page="Delete" asp-route-id="@e.ExamID">Delete</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

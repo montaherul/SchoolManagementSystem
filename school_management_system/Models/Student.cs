@@ -7,6 +7,7 @@ namespace school_management_system.Models
 {
     public class Student
     {
+        [Key]
         public int StudentID { get; set; }
 
         public string? AdmissionNumber { get; set; }
@@ -30,7 +31,13 @@ namespace school_management_system.Models
 
         public DateTime AdmissionDate { get; set; }
 
+        // Admission year used for roll grouping
+        public int AdmissionYear { get; set; }
+
         public int ClassID { get; set; }
+
+        // Allow empty roll → auto generate later
+        public int? RollNumber { get; set; }
 
         public int SectionID { get; set; }
 
@@ -41,10 +48,13 @@ namespace school_management_system.Models
         [NotMapped]
         public IFormFile? Photo { get; set; }
 
-        // Navigation properties
+        // Navigation
         public Class? Class { get; set; }
 
         public Section? Section { get; set; }
 
+        // Helpful property for UI
+        [NotMapped]
+        public string FullName => $"{FirstName} {LastName}";
     }
 }

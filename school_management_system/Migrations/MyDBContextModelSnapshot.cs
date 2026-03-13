@@ -175,6 +175,46 @@ namespace school_management_system.Migrations
                     b.ToTable("Exams");
                 });
 
+            modelBuilder.Entity("school_management_system.Models.ExamRoutine", b =>
+                {
+                    b.Property<int>("ExamRoutineID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExamRoutineID"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("ExamID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("InvigilatorID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Room")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("SubjectID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExamRoutineID");
+
+                    b.HasIndex("ExamID");
+
+                    b.HasIndex("InvigilatorID");
+
+                    b.HasIndex("SubjectID");
+
+                    b.ToTable("ExamRoutines");
+                });
+
             modelBuilder.Entity("school_management_system.Models.FeePayment", b =>
                 {
                     b.Property<int>("PaymentID")
@@ -213,6 +253,9 @@ namespace school_management_system.Migrations
                     b.Property<int>("ExamID")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsPassed")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Marks")
                         .HasColumnType("int");
 
@@ -244,11 +287,26 @@ namespace school_management_system.Migrations
                     b.Property<int>("ExamID")
                         .HasColumnType("int");
 
+                    b.Property<double>("GPA")
+                        .HasColumnType("float");
+
                     b.Property<string>("Grade")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsLocked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("bit");
+
                     b.Property<double>("Percentage")
                         .HasColumnType("float");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("PublishedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
@@ -397,6 +455,9 @@ namespace school_management_system.Migrations
                     b.Property<string>("AdmissionNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("AdmissionYear")
+                        .HasColumnType("int");
+
                     b.Property<int>("ClassID")
                         .HasColumnType("int");
 
@@ -422,6 +483,9 @@ namespace school_management_system.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RollNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SectionID")
@@ -479,9 +543,15 @@ namespace school_management_system.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubjectID"));
 
+                    b.Property<int>("PassMarks")
+                        .HasColumnType("int");
+
                     b.Property<string>("SubjectName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalMarks")
+                        .HasColumnType("int");
 
                     b.HasKey("SubjectID");
 
@@ -670,6 +740,31 @@ namespace school_management_system.Migrations
                     b.Navigation("Class");
                 });
 
+            modelBuilder.Entity("school_management_system.Models.ExamRoutine", b =>
+                {
+                    b.HasOne("school_management_system.Models.Exam", "Exam")
+                        .WithMany()
+                        .HasForeignKey("ExamID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("school_management_system.Models.Teacher", "Invigilator")
+                        .WithMany()
+                        .HasForeignKey("InvigilatorID");
+
+                    b.HasOne("school_management_system.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exam");
+
+                    b.Navigation("Invigilator");
+
+                    b.Navigation("Subject");
+                });
+
             modelBuilder.Entity("school_management_system.Models.FeePayment", b =>
                 {
                     b.HasOne("school_management_system.Models.Student", "Student")
@@ -684,7 +779,7 @@ namespace school_management_system.Migrations
             modelBuilder.Entity("school_management_system.Models.Mark", b =>
                 {
                     b.HasOne("school_management_system.Models.Exam", "Exam")
-                        .WithMany()
+                        .WithMany("Marks")
                         .HasForeignKey("ExamID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -876,6 +971,11 @@ namespace school_management_system.Migrations
                     b.Navigation("ClassSubjects");
 
                     b.Navigation("Sections");
+                });
+
+            modelBuilder.Entity("school_management_system.Models.Exam", b =>
+                {
+                    b.Navigation("Marks");
                 });
 
             modelBuilder.Entity("school_management_system.Models.Subject", b =>

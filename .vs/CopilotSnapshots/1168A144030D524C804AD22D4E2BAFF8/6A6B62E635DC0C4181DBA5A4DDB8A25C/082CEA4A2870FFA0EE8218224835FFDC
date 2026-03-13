@@ -1,0 +1,168 @@
+﻿@model school_management_system.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            Photo
+        </dt>
+
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.PhotoPath))
+            {
+                <img src="@Model.PhotoPath"
+                     width="150"
+                     height="150"
+                     style="border-radius:8px; object-fit:cover;" />
+            }
+            else
+            {
+                <img src="/images/students/default.png"
+                     width="150"
+                     height="150" />
+            }
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Admission Number
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.AdmissionNumber
+        </dd>
+
+
+        <dt class="col-sm-2">
+            First Name
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.FirstName
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Last Name
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.LastName
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Gender
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.Gender
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Date Of Birth
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.DateOfBirth.ToString("dd MMM yyyy")
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Address
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.Address
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Parent Name
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.ParentName
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Parent Phone
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.ParentPhone
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Parent Email
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.ParentEmail
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Admission Date
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.AdmissionDate.ToString("dd MMM yyyy")
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Class
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.Class?.ClassName
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Section
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.Section?.SectionName
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Status
+        </dt>
+
+        <dd class="col-sm-10">
+            @Model.Status
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+
+    <a asp-action="Edit"
+           asp-route-id="@Model?.StudentID"
+           class="btn btn-warning">
+        Edit
+    </a>
+
+    <a asp-action="Index"
+           class="btn btn-secondary">
+        Back
+    </a>
+
+</div>

@@ -42,6 +42,23 @@ namespace school_management_system.Controllers
 
             return View(teacher);
         }
+        public async Task<IActionResult> Profile(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var teacher = await _context.Teachers
+                .FirstOrDefaultAsync(m => m.TeacherID == id);
+            if (teacher == null)
+            {
+                return NotFound();
+            }
+
+            return View(teacher);
+           
+        }
 
         // GET: Teachers/Create
         public IActionResult Create()
@@ -54,12 +71,43 @@ namespace school_management_system.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TeacherID,FirstName,LastName,Phone,Email,Address,PhotoPath,HireDate")] Teacher teacher)
+        public async Task<IActionResult> Create([Bind("TeacherID,FirstName,LastName,Phone,Email,Address,PhotoPath,Photo,HireDate")] Teacher teacher)
         {
+            //if (ModelState.IsValid)
+            //{
+            //    _context.Add(teacher);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+
+            //}
+
+
+
             if (ModelState.IsValid)
             {
+                if (teacher.Photo != null)
+                {
+                    string folder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/teachers");
+
+                    if (!Directory.Exists(folder))
+                        Directory.CreateDirectory(folder);
+
+                    string fileName = Guid.NewGuid().ToString() +
+                                      Path.GetExtension(teacher.Photo.FileName);
+
+                    string filePath = Path.Combine(folder, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await teacher.Photo.CopyToAsync(stream);
+                    }
+
+                    teacher.PhotoPath = "/images/teachers/" + fileName;
+                }
+
                 _context.Add(teacher);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(teacher);
@@ -86,7 +134,7 @@ namespace school_management_system.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TeacherID,FirstName,LastName,Phone,Email,Address,PhotoPath,HireDate")] Teacher teacher)
+        public async Task<IActionResult> Edit(int id, [Bind("TeacherID,FirstName,LastName,Phone,Email,Address,PhotoPath,Photo,HireDate")] Teacher teacher)
         {
             if (id != teacher.TeacherID)
             {
@@ -97,22 +145,45 @@ namespace school_management_system.Controllers
             {
                 try
                 {
+                    var existingTeacher = await _context.Teachers
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(s => s.TeacherID == id);
+
+                    if (teacher.Photo != null)
+                    {
+                        string folder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/teachers");
+
+                        string fileName = Guid.NewGuid().ToString() +
+                                          Path.GetExtension(teacher.Photo.FileName);
+
+                        string filePath = Path.Combine(folder, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await teacher.Photo.CopyToAsync(stream);
+                        }
+
+                        teacher.PhotoPath = "/images/teachers/" + fileName;
+                    }
+                    else
+                    {
+                        teacher.PhotoPath = existingTeacher.PhotoPath;
+                    }
+
                     _context.Update(teacher);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!TeacherExists(teacher.TeacherID))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(teacher);
         }
 
@@ -142,6 +213,17 @@ namespace school_management_system.Controllers
             var teacher = await _context.Teachers.FindAsync(id);
             if (teacher != null)
             {
+
+
+                if (!string.IsNullOrEmpty(teacher.PhotoPath))
+                {
+                    string path = Path.Combine(Directory.GetCurrentDirectory(),
+                                               "wwwroot",
+                                               teacher.PhotoPath.TrimStart('/'));
+
+                    if (System.IO.File.Exists(path))
+                        System.IO.File.Delete(path);
+                }
                 _context.Teachers.Remove(teacher);
             }
 

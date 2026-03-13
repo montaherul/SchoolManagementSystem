@@ -19,92 +19,143 @@ namespace school_management_system.Controllers
             _context = context;
         }
 
-        // GET: Marks
+        // =========================
+        // MARKS LIST
+        // =========================
         public async Task<IActionResult> Index()
         {
-            var myDBContext = _context.Marks.Include(m => m.Exam).Include(m => m.Student).Include(m => m.Subject);
-            return View(await myDBContext.ToListAsync());
+            var marks = _context.Marks
+                .Include(m => m.Student)
+                .Include(m => m.Subject)
+                .Include(m => m.Exam);
+
+            return View(await marks.ToListAsync());
         }
 
-        // GET: Marks/Details/5
+        // =========================
+        // DETAILS
+        // =========================
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var mark = await _context.Marks
-                .Include(m => m.Exam)
                 .Include(m => m.Student)
                 .Include(m => m.Subject)
+                .Include(m => m.Exam)
                 .FirstOrDefaultAsync(m => m.MarkID == id);
+
             if (mark == null)
-            {
                 return NotFound();
-            }
 
             return View(mark);
         }
 
-        // GET: Marks/Create
+        // =========================
+        // CREATE (GET)
+        // =========================
         public IActionResult Create()
         {
-            ViewData["ExamID"] = new SelectList(_context.Exams, "ExamID", "ExamID");
-            ViewData["StudentID"] = new SelectList(_context.Students, "StudentID", "StudentID");
+            ViewData["ExamID"] = new SelectList(_context.Exams, "ExamID", "ExamName");
+
+            ViewData["StudentID"] = new SelectList(
+                _context.Students.Select(s => new
+                {
+                    s.StudentID,
+                    Name = s.RollNumber + " - " + s.FirstName + " " + s.LastName
+                }),
+                "StudentID",
+                "Name"
+            );
+
             ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectName");
+
             return View();
         }
 
-        // POST: Marks/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // =========================
+        // CREATE (POST)
+        // =========================
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MarkID,StudentID,SubjectID,ExamID,Marks")] Mark mark)
         {
+            var exists = await _context.Marks.AnyAsync(m =>
+                m.StudentID == mark.StudentID &&
+                m.SubjectID == mark.SubjectID &&
+                m.ExamID == mark.ExamID);
+
+            if (exists)
+            {
+                ModelState.AddModelError("", "Marks already entered for this student in this subject and exam.");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(mark);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ExamID"] = new SelectList(_context.Exams, "ExamID", "ExamID", mark.ExamID);
-            ViewData["StudentID"] = new SelectList(_context.Students, "StudentID", "StudentID", mark.StudentID);
+
+            ViewData["ExamID"] = new SelectList(_context.Exams, "ExamID", "ExamName", mark.ExamID);
+
+            ViewData["StudentID"] = new SelectList(
+                _context.Students.Select(s => new
+                {
+                    s.StudentID,
+                    Name = s.RollNumber + " - " + s.FirstName + " " + s.LastName
+                }),
+                "StudentID",
+                "Name",
+                mark.StudentID
+            );
+
             ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectName", mark.SubjectID);
+
             return View(mark);
         }
 
-        // GET: Marks/Edit/5
+        // =========================
+        // EDIT (GET)
+        // =========================
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var mark = await _context.Marks.FindAsync(id);
+
             if (mark == null)
-            {
                 return NotFound();
-            }
-            ViewData["ExamID"] = new SelectList(_context.Exams, "ExamID", "ExamID", mark.ExamID);
-            ViewData["StudentID"] = new SelectList(_context.Students, "StudentID", "StudentID", mark.StudentID);
+
+            ViewData["ExamID"] = new SelectList(_context.Exams, "ExamID", "ExamName", mark.ExamID);
+
+            ViewData["StudentID"] = new SelectList(
+                _context.Students.Select(s => new
+                {
+                    s.StudentID,
+                    Name = s.RollNumber + " - " + s.FirstName   + " " + s.LastName
+                }),
+                "StudentID",
+                "Name",
+                mark.StudentID
+            );
+
             ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectName", mark.SubjectID);
+
             return View(mark);
         }
 
-        // POST: Marks/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // =========================
+        // EDIT (POST)
+        // =========================
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MarkID,StudentID,SubjectID,ExamID,Marks")] Mark mark)
         {
             if (id != mark.MarkID)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
@@ -116,58 +167,69 @@ namespace school_management_system.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!MarkExists(mark.MarkID))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ExamID"] = new SelectList(_context.Exams, "ExamID", "ExamID", mark.ExamID);
-            ViewData["StudentID"] = new SelectList(_context.Students, "StudentID", "StudentID", mark.StudentID);
+
+            ViewData["ExamID"] = new SelectList(_context.Exams, "ExamID", "ExamName", mark.ExamID);
+
+            ViewData["StudentID"] = new SelectList(
+                _context.Students.Select(s => new
+                {
+                    s.StudentID,
+                    Name = s.RollNumber + " - " + s.FirstName    + " " + s.LastName
+                }),
+                "StudentID",
+                "Name",
+                mark.StudentID
+            );
+
             ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectName", mark.SubjectID);
+
             return View(mark);
         }
 
-        // GET: Marks/Delete/5
+        // =========================
+        // DELETE
+        // =========================
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var mark = await _context.Marks
-                .Include(m => m.Exam)
                 .Include(m => m.Student)
                 .Include(m => m.Subject)
+                .Include(m => m.Exam)
                 .FirstOrDefaultAsync(m => m.MarkID == id);
+
             if (mark == null)
-            {
                 return NotFound();
-            }
 
             return View(mark);
         }
 
-        // POST: Marks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var mark = await _context.Marks.FindAsync(id);
+
             if (mark != null)
-            {
                 _context.Marks.Remove(mark);
-            }
 
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
+        // =========================
+        // CHECK EXIST
+        // =========================
         private bool MarkExists(int id)
         {
             return _context.Marks.Any(e => e.MarkID == id);

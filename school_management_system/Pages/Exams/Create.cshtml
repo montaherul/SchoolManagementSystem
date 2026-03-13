@@ -1,0 +1,19 @@
+@page
+@model school_management_system.Pages.Exams.CreateModel
+
+<h2>Create Exam</h2>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Exam.ExamName"></label>
+        <input asp-for="Exam.ExamName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Exam.ClassID">Class</label>
+        <select asp-for="Exam.ClassID" asp-items="Model.Classes" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Exam.ExamDate"></label>
+        <input asp-for="Exam.ExamDate" class="form-control" type="date" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

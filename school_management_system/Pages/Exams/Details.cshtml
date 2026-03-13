@@ -1,0 +1,16 @@
+@page "{id:int}"
+@model school_management_system.Pages.Exams.DetailsModel
+
+<h2>Exam Details</h2>
+<dl class="row">
+    <dt class="col-sm-2">Name</dt>
+    <dd class="col-sm-10">@Model.Exam.ExamName</dd>
+
+    <dt class="col-sm-2">Class</dt>
+    <dd class="col-sm-10">@Model.Exam.Class?.ClassName</dd>
+
+    <dt class="col-sm-2">Date</dt>
+    <dd class="col-sm-10">@Model.Exam.ExamDate.ToShortDateString()</dd>
+</dl>
+
+<p><a asp-page="Edit" asp-route-id="@Model.Exam.ExamID">Edit</a> | <a asp-page="Index">Back to list</a></p>

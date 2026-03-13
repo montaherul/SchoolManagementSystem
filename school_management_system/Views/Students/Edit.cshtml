@@ -101,6 +101,12 @@
             </div>
 
             <div class="form-group">
+                <label asp-for="RollNumber"></label>
+                <input asp-for="RollNumber" class="form-control" />
+                <span asp-validation-for="RollNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <label>Class</label>
             <select id="classDropdown"
                     asp-for="ClassID"

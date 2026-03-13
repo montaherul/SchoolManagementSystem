@@ -28,6 +28,7 @@ namespace school_management_system
         public DbSet<TeacherSubject> TeacherSubjects { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Exam> Exams { get; set; }
+        public DbSet<ExamRoutine> ExamRoutines { get; set; }
 
         public DbSet<Mark> Marks { get; set; }
 
